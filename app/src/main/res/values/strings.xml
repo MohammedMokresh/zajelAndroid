@@ -1,0 +1,189 @@
+<resources>
+    <string name="app_name">Zajel Android</string>
+
+    <string name="profile">Profile</string>
+    <string name="password">Password</string>
+
+    <string name="you_don_t_have_account">You don\'t have account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="or_sign_in_with">or sign in with :</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_a_member">Already a member?</string>
+    <string name="invalid_email">Please insert valid Email</string>
+    <string name="password_empty">Please the password should not be empty</string>
+    <string name="password_not_right">The password must be at least 8 characters</string>
+    <string name="password_not_match">Your password does not match</string>
+    <string name="empty_name">Please Enter your name</string>
+    <string name="empty_date">Please Enter your Birthday</string>
+    <string name="empty_last_name">Please Enter you last name</string>
+    <string name="empty_address">Please Enter your address</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name">Name</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="address">Address</string>
+    <string name="phone">Phone</string>
+    <string name="upload_your_id_card">Upload your ID Card</string>
+    <string name="update_your_information">Update your information</string>
+    <string name="please_sign_in">Please Sign In to make the transaction</string>
+    <string name="select_news_category">Select news category</string>
+    <string name="all_news">All news</string>
+    <string name="accidents">Accidents</string>
+    <string name="economy">Economy</string>
+    <string name="world">World</string>
+    <string name="society">Society</string>
+    <string name="cultural">Cultural</string>
+    <string name="sport">Sport</string>
+    <string name="technology">Technology</string>
+    <string name="political">Political</string>
+    <string name="news">News</string>
+    <string name="currencies">Currencies</string>
+    <string name="sell_price">Sell price : </string>
+    <string name="buy_price">Buy price : </string>
+    <string name="last_update">Last update:</string>
+    <string name="select_currencies_category">Select Currencies Category</string>
+    <string name="from_to"><![CDATA[From->To]]></string>
+    <string name="from_to_edit">The end date must not be smaller than the start date</string>
+    <string name="send">Send</string>
+    <string name="receive">Receive</string>
+
+
+    <string name="bank_name">Bank Name : </string>
+
+
+    <string name="empty_amount">Please Enter the Amount</string>
+    <string name="empty_country">Please Enter the Country</string>
+    <string name="empty_beneficiary_name">Please Enter the Beneficiary Name</string>
+    <string name="empty_beneficiary_account_number">Please Enter the Beneficiary account number </string>
+    <string name="empty_Beneficiary_address">Please Enter the Beneficiary address</string>
+    <string name="empty_bank_address">Please Enter The Bank Address</string>
+    <string name="empty_bank_number">Please Enter The Bank Number</string>
+    <string name="empty_tel">Please Enter The Receiver Phone Number</string>
+    <string name="empty_card_number">Please Enter The Card Number</string>
+    <string name="empty_CRN">Please Enter The Company Registration Number</string>
+    <string name="empty_local_bank_code">Please Enter your name</string>
+    <string name="empty_IBAN">Please Enter The IBAN</string>
+    <string name="empty_institution">Please Enter The Institution Number</string>
+    <string name="empty_id_number">Please Enter The ID Number</string>
+    <string name="empty_recipe">Please Upload The Recipe Picture</string>
+    <string name="empty_ic_reciver">Please Upload The Passport of The Receiver</string>
+    <string name="empty_ic_sender">Please Upload The Passport of The Sender</string>
+    <string name="empty_shepa_number">Please Enter The Shepa Number</string>
+
+    <string name="empty_old_pass">Please enter your old password</string>
+    <string name="empty_new_pass">Please enter the new password</string>
+    <string name="empty_confirm_pass">Please confirm your new password</string>
+
+
+    <string name="AED">AED - Arab Emirates Dirham</string>
+    <string name="AUD">AUD - Australian Dollar</string>
+    <string name="GBR">GBP - British Pound</string>
+    <string name="CAD">CAD - Canadian Dollar</string>
+    <string name="EUR">EUR - Euro</string>
+    <string name="IRR">IRR - Iranian Rial</string>
+    <string name="MYR">MYR - Malaysian Ringgit</string>
+    <string name="USD">USD - United States Dollar</string>
+
+
+    <string name="Australia">AUS - Australia</string>
+    <string name="Canada">CA - Canada</string>
+    <string name="China">CN - China</string>
+    <string name="Germany">DE - Germany</string>
+    <string name="Spain">ES - Spain</string>
+    <string name="HongKong">HK - Hong Kong</string>
+    <string name="Indonesia">ID - Indonesia</string>
+    <string name="Iran">IR - Islamic Republic of Iran</string>
+    <string name="Italy">IT - Italy</string>
+    <string name="Korea">KR - Republic of Korea</string>
+    <string name="Malaysia">MY - Malaysia</string>
+    <string name="Philippines">PH - Philippines</string>
+    <string name="Singapore">SG - Singapore</string>
+    <string name="Taiwan">TW - Taiwan</string>
+    <string name="Emirates">UAE - United Arab Emirates</string>
+    <string name="UnitedKingdom">UK - United Kingdom</string>
+    <string name="USA">USA - United States of America</string>
+    <string name="business_transfer">Business transfer</string>
+    <string name="personal_transfer">Personal transfer</string>
+    <string name="cash_collection">Cash collection</string>
+    <string name="collection">Collection</string>
+    <string name="cash_deposit">Cash deposit</string>
+    <string name="bank_transfer">Bank transfer</string>
+    <string name="amount_of_money">Amount Of Money</string>
+    <string name="beneficiary_name">Beneficiary Name</string>
+    <string name="beneficiary_account_number">Beneficiary Account Number</string>
+    <string name="beneficiary_name1">Beneficiary Name : </string>
+    <string name="beneficiary_account_number1">Beneficiary Account Number : </string>
+
+    <string name="receiver_phone_number">Receiver Phone Number</string>
+    <string name="please_attach_recipe_picture">Please attach recipe Picture</string>
+    <string name="please_attach_ic_passport_of_reciver">Please attach IC/Passport of reciver</string>
+    <string name="please_attach_ic_passport_of_sender">Please attach IC/Passport of sender</string>
+    <string name="bank_address">Bank Address</string>
+    <string name="reference">Reference</string>
+    <string name="beneficiary_address">Beneficiary Address</string>
+    <string name="next">Next</string>
+    <string name="company_registration_number">company registration number</string>
+    <string name="local_bank_code">Local Bank Code</string>
+    <string name="iban">IBAN</string>
+    <string name="institution_number">Institution Number</string>
+    <string name="sent">Sent</string>
+    <string name="myr_exchange">MYR Exchange</string>
+    <string name="telegraphic_transfers">Telegraphic Transfers</string>
+    <string name="shiraz_branch">Shiraz branch</string>
+    <string name="tehran_branch">Tehran branch</string>
+    <string name="beneficiary_bank">Beneficiary Bank</string>
+    <string name="swift_code">Swift Code</string>
+    <string name="card_number">Card Number</string>
+    <string name="id_number">ID Number</string>
+    <string name="bank_number">Bank Number</string>
+    <string name="old_password">Old Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="new_password">New Password</string>
+    <string name="update">Update</string>
+    <string name="logout">Logout</string>
+    <string name="change_password">Change Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="email">Email</string>
+    <string name="do_you_want_to_save_this_transaction_in_favourites">Do you want to save this transaction in favourites?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="favourites">Favourites</string>
+    <string name="history">History</string>
+    <string name="beneficiary_id">Beneficiary Id</string>
+    <string name="recipe">Recipe</string>
+    <string name="cancel">Cancel</string>
+    <string name="book">Book</string>
+    <string name="are_you_sure_you_want_to_book_this_currency">Are you sure you want to book this currency?</string>
+    <string name="are_you_sure_you_want_to_request_bank_this_currency">Please choose the bank that you want yo request</string>
+    <string name="are_you_sure_you_want_to_cancel_this_booking">Are you sure you want to cancel this Booking?</string>
+    <string name="booking">Booking</string>
+    <string name="done">Done</string>
+
+    <string name="amount">Amount : </string>
+    <string name="status">Status : </string>
+    <string name="shepa">Shepa </string>
+    <string name="from_currency">From Currency : </string>
+    <string name="to_currency">To Currency : </string>
+    <string name="recieve_amount">Received Amount : </string>
+    <string name="fee">Fee : </string>
+    <string name="exit_sarafi_zand">Exit Sarafi Zand?</string>
+    <string name="are_you_sure_you_want_to_exit_nsarafi_zand">Are you sure you want to exit Sarafi Zand?</string>
+    <string name="notifications">Notifications</string>
+    <string name="request_bank_account">Request Bank Account</string>
+    <string name="country">Country</string>
+    <string name="request">Request</string>
+    <string name="is_buis">Is Business</string>
+    <string name="rejection">Rejection Reason</string>
+    <string name="created">Created at</string>
+    <string name="asset_statements" translatable="false">[{\n  \"relation\": [\"delegate_permission/common.handle_all_urls\"],\n  \"target\": {\n    \"namespace\": \"web\",\n    \"site\": \"https://admin.zandexchange.com\",\n  }\n}]</string>
+
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don\'t Have An Account ?</string>
+    <string name="signin">Signin</string>
+    <string name="by_signing_up_you_agree_with_our_terms_and_conditions">By Signing up you agree with our terms and conditions</string>
+
+
+</resources>
+

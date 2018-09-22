@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "548369515861",
+    "firebase_url": "https://zajel-84c4d.firebaseio.com",
+    "project_id": "zajel-84c4d",
+    "storage_bucket": "zajel-84c4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:548369515861:android:019371a803b2dc0e",
+        "android_client_info": {
+          "package_name": "com.zajel.zajelandroid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "548369515861-6pcq8o4g6ccbmnbmm6lt4jjtmdbmhc9e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zajel.zajelandroid",
+            "certificate_hash": "b282fb368b103a6fc1967e9df5604864ae3ae851"
+          }
+        },
+        {
+          "client_id": "548369515861-gvbeetdi103gpi40ia102tvbb8lajj4c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-jkqnl2dsmQpw7arUBh8x5W_Xeqh2rB8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "548369515861-gvbeetdi103gpi40ia102tvbb8lajj4c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

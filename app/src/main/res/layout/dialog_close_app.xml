@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:background="@color/grey_0"
+    android:paddingStart="45dp"
+    android:paddingEnd="45dp"
+    android:layout_marginStart="30dp"
+    android:layout_marginEnd="30dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_marginTop="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#323133"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:text="Exit PGSS?"/>
+
+    <TextView
+        android:id="@+id/tv_msg"
+        android:textSize="14sp"
+        android:layout_marginTop="18dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#818386"
+        android:gravity="center"
+        android:layout_marginBottom="26dp"
+        android:text="Are you sure you want to exit\nPGSS?"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="38dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#808285"
+            android:textSize="12sp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_no_fill_rounded_grey_border"
+            android:layout_marginEnd="20dp"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:text="Yes"/>
+
+        <Button
+            android:id="@+id/btn_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#808285"
+            android:textSize="12sp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_no_fill_rounded_grey_border"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:text="No"/>
+    </LinearLayout>
+
+</LinearLayout>
