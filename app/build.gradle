@@ -9,11 +9,12 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "REALM_FILE_NAME", "\"zajelRealm.realm\""
         buildConfigField "int", "REALM_FILE_VERSION", "1"
         buildConfigField "String", "BASE_URL", "\"https://zajel-staging.herokuapp.com/\""
+        vectorDrawables.useSupportLibrary = true
 
     }
     buildTypes {
@@ -23,42 +24,68 @@ android {
         }
     }
 }
+android {
+    dataBinding {
+        enabled = true
+    }
+}
 
 dependencies {
+
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:28.0.0-rc02'
-    implementation 'com.android.support:recyclerview-v7:28.0.0-rc02'
-    implementation 'com.android.support:appcompat-v7:28.0.0-rc02'
-    implementation 'com.android.support:cardview-v7:28.0.0-rc02'
-    implementation 'com.android.support:design:28.0.0-rc02'
-    implementation 'com.android.support:support-v4:28.0.0-rc02'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+
+
+
+    //adding view model
+    implementation 'android.arch.lifecycle:extensions:1.1.1'
+    implementation 'android.arch.lifecycle:viewmodel:1.1.1'
+
+    //adding paging
+    implementation 'android.arch.paging:runtime:1.0.1'
+
+    /*
+     * Step 4: Adding retrofit to the app
+     */
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okio:okio:1.14.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+
+
     implementation 'de.hdodenhof:circleimageview:2.1.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'com.tbuonomo.andrui:circleloading:1.0.0'
     implementation 'com.makeramen:roundedimageview:2.3.0'
     implementation 'com.google.android:flexbox:1.0.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.google.code.gson:gson:2.8.1'
-    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-    implementation 'com.squareup.okio:okio:1.14.0'
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    implementation 'com.google.firebase:firebase-messaging:17.3.1'
+
+
+//    implementation 'com.jakewharton:butterknife:8.8.1'
+//    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.jakewharton:butterknife:9.0.0-SNAPSHOT'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
+
+
+    implementation 'com.google.firebase:firebase-messaging:17.3.2'
     implementation 'com.google.firebase:firebase-auth:16.0.3'
     implementation 'com.google.android.gms:play-services-auth:16.0.0'
     implementation 'com.google.firebase:firebase-core:16.0.3'
 
 
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation group: 'com.cloudinary', name: 'cloudinary-android', version: '1.24.0'
 
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
 apply plugin: 'com.google.gms.google-services'

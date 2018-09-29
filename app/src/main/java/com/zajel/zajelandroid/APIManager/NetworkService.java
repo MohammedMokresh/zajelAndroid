@@ -3,6 +3,7 @@ package com.zajel.zajelandroid.APIManager;
 
 import com.google.gson.JsonElement;
 import com.zajel.zajelandroid.BuildConfig;
+import com.zajel.zajelandroid.Home.BooksModels.Books;
 import com.zajel.zajelandroid.Login.LogInRequestBody;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRequestBody;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRespnseBody;
@@ -16,7 +17,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 
 public class NetworkService {
@@ -26,9 +29,10 @@ public class NetworkService {
     private static final String BASE_URL = BuildConfig.BASE_URL;
     private final static String TABLE_SIGN_UP = "auth";
     private final static String TABLE_LOG_IN = "auth/sign_in";
+    private final static String TABLE_BOOKS = "books";
     private final static String TABLE_GOOGLE_LOG_IN = "auth/google_oauth2?auth_origin_url="+BuildConfig.BASE_URL;
 
-    public ZajelNetworkAPI getAPI() {
+    public  ZajelNetworkAPI getAPI() {
 
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -61,6 +65,11 @@ public class NetworkService {
 
         @POST(TABLE_LOG_IN)
         Call<SignUpRespnseBody> logIn(@Body LogInRequestBody logInRequestBody);
+
+
+        @GET(TABLE_BOOKS)
+        Call<Books> getBooks(@Header("Content-Type") String contentType,@Header("Accept") String accept, @Query("page") int page);
+
 
         @GET(TABLE_GOOGLE_LOG_IN)
         Call<JsonElement> googleLogIn();

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafafa"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/message_button"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_gravity="center_vertical"
+                android:adjustViewBounds="true"
+                android:background="#00FFFFFF"
+                android:padding="18dp"
+                android:scaleType="fitCenter"
+                android:visibility="visible"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/app_logo_ImageView"
+                android:layout_width="120dp"
+                android:layout_height="45dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:paddingTop="3dp"
+                android:visibility="visible" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/grey_300" />
+
+    </LinearLayout>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FAFAFA">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/my_appbar_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FAFAFA"
+            android:elevation="0dp"
+            app:elevation="0dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_profile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-20dp"
+                android:background="#fafafa"
+                android:elevation="0dp"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:background="#fafafa">
+
+                    <LinearLayout
+                        android:id="@+id/llTabsNew"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="#fafafa"
+                        android:orientation="horizontal"
+                        android:scrollbars="none"
+                        android:visibility="visible"
+                        android:weightSum="10"
+                        app:layout_scrollFlags="scroll|enterAlways">
+
+                        <RelativeLayout
+                            android:id="@+id/recently_active_relativeLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="9dp"
+                            android:layout_marginStart="9dp"
+
+                            android:layout_weight="3.5">
+
+                            <TextView
+                                android:id="@+id/recently_active_TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/proxima_nova_regular"
+                                android:gravity="center"
+                                android:lineSpacingMultiplier="1.21"
+                                android:paddingBottom="4dp"
+                                android:paddingEnd="10dp"
+                                android:paddingStart="10dp"
+                                android:paddingTop="4dp"
+                                android:text="test"
+                                android:textColor="#000"
+                                android:textSize="14sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/nearby_relativeLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="9dp"
+                            android:layout_marginStart="9dp"
+                            android:layout_weight="2.5">
+
+
+                            <TextView
+                                android:id="@+id/nearestTextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/proxima_nova_regular"
+                                android:lineSpacingMultiplier="1.21"
+                                android:paddingBottom="4dp"
+                                android:paddingEnd="10dp"
+                                android:paddingStart="10dp"
+                                android:paddingTop="4dp"
+                                android:text="test1"
+                                android:textColor="@color/grey_500"
+                                android:textSize="14sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/featured_relativeLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="9dp"
+                            android:layout_marginStart="9dp"
+                            android:layout_weight="2.5">
+
+                            <TextView
+                                android:id="@+id/featured_TextView"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="@font/proxima_nova_regular"
+                                android:gravity="center"
+                                android:lineSpacingMultiplier="1.21"
+                                android:paddingBottom="4dp"
+                                android:paddingEnd="10dp"
+                                android:paddingStart="10dp"
+                                android:paddingTop="4dp"
+                                android:text="test1"
+                                android:textColor="@color/grey_500"
+                                android:textSize="14sp" />
+
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/filters_relativeLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="9dp"
+                            android:layout_marginStart="9dp"
+                            android:layout_weight="1.5">
+
+                            <ImageView
+                                android:id="@+id/ivTabFilter"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center_vertical"
+                                android:scaleType="centerInside" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fafafa"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/swipe_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="4dp"
+                android:layout_marginStart="4dp"
+                android:background="#fafafa"
+                android:visibility="visible"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_SecTwo_ProfilesGrid"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#fafafa" />
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+</LinearLayout>
+

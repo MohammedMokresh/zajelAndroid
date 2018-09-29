@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:id="@+id/main_content_frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+    <View
+        android:visibility="gone"
+        android:id="@+id/grey_seperator"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray"
+        android:layout_above="@+id/nav_bottom_linearLayout"
+        />
+    <LinearLayout
+        android:id="@+id/nav_bottom_linearLayout"
+        android:layout_width="match_parent"
+        android:weightSum="4"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_nav_bottm"
+        android:layout_alignParentBottom="true"
+        android:layout_height="60dp">
+
+        <RelativeLayout
+            android:id="@+id/home_relativeLayout"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+
+            <ImageButton
+                android:id="@+id/home_imageButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:layout_centerInParent="true"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/home_red"
+                />
+
+            <!--<ImageButton-->
+                <!--android:id="@+id/home_indicator"-->
+                <!--android:layout_marginTop="4dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:visibility="gone"-->
+                <!--android:layout_below="@+id/home_imageButton"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--app:srcCompat="@drawable/purple_dot"-->
+                <!--/>-->
+
+        </RelativeLayout>
+
+
+
+        <RelativeLayout
+            android:id="@+id/request_RelativeLayout"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+
+            <ImageButton
+
+                android:id="@+id/request_imageButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/requests"
+                />
+
+            <!--<ImageButton-->
+                <!--android:visibility="gone"-->
+
+                <!--android:id="@+id/vewed_me_indicator"-->
+                <!--android:layout_marginTop="4dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/viewed_me_imageButton"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--app:srcCompat="@drawable/purple_dot"-->
+                <!--/>-->
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/wishlist_relativeLayout"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+
+            <ImageButton
+                android:id="@+id/wishlist_imageButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/wishlist"
+                />
+
+            <!--<ImageButton-->
+                <!--android:visibility="gone"-->
+
+                <!--android:id="@+id/favorites_indicator"-->
+                <!--android:layout_marginTop="4dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/favourites_imageButton"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--app:srcCompat="@drawable/purple_dot"-->
+                <!--/>-->
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/profile_relativeLayout"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+
+            <ImageButton
+                android:id="@+id/profile_imageButton"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/profile"
+                />
+
+            <!--<ImageButton-->
+                <!--android:visibility="gone"-->
+                <!--android:id="@+id/profile_indicator"-->
+                <!--android:layout_marginTop="4dp"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@+id/profile_imageButton"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--app:srcCompat="@drawable/purple_dot"-->
+                <!--/>-->
+
+        </RelativeLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

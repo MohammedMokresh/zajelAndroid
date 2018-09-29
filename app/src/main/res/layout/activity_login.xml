@@ -22,7 +22,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -39,10 +39,10 @@
 
 
                 />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-        <android.support.design.widget.TextInputLayout
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
                 android:inputType="textPassword"
                 android:textColor="@color/colorPrimary"
                 android:textSize="14sp" />
-        </android.support.design.widget.TextInputLayout>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
@@ -140,7 +140,7 @@
             />
     </LinearLayout>
     <com.google.android.gms.common.SignInButton
-        android:visibility="invisible"
+        android:visibility="visible"
         android:id="@+id/sign_in_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

@@ -1,6 +1,6 @@
 package com.zajel.zajelandroid.Dialogs;
 
-import android.support.v4.app.FragmentManager;
+import androidx.fragment.app.FragmentManager;
 
 
 public class DialogUtil {

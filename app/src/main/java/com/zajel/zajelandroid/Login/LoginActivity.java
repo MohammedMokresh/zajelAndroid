@@ -2,9 +2,10 @@ package com.zajel.zajelandroid.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.TextInputLayout;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import com.google.android.material.textfield.TextInputLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -45,7 +46,7 @@ import static com.zajel.zajelandroid.Utils.ValidateUtil.validatePassword;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener
         , APIManager.LogInResponse
         , APIManager.GoogleLogInResponse {
-    private static int RC_SIGN_IN = 22;
+    private static int RC_SIGN_IN = 222;
 
 
     @BindView(R.id.signup_TextView)
@@ -101,6 +102,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken("548369515861-gvbeetdi103gpi40ia102tvbb8lajj4c.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
@@ -145,12 +147,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             case R.id.google_ImageView:
                 Log.e("clicked", "click");
-                googleSignInButton.callOnClick();
-                googleSignInButton.performClick();
-//                facebookImageView.performClick();
-
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN);
+
+//                googleSignInButton.callOnClick();
+//                googleSignInButton.performClick();
+//                facebookImageView.performClick();
+
+//                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+//                startActivityForResult(signInIntent, RC_SIGN_IN);
 
 //                apiManager.googleLogIn();
                 break;
@@ -217,13 +222,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            Log.e("test", account.getDisplayName());
+            Log.e("test", account.getId());
             firebaseAuthWithGoogle(account);
             // Signed in successfully, show authenticated UI.
 //            updateUI(account);
         } catch (ApiException e) {
+            Log.e("tesssst", e.getLocalizedMessage());
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
 //            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
@@ -231,19 +238,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-
+    FirebaseUser user ;
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         Log.e("sdsds", "firebaseAuthWithGoogle:" + acct.getIdToken());
-
+        final Long starttime= System.currentTimeMillis();
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    public void onComplete(@NonNull final Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.e("sdsds", "signInWithCredential:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+                            final FirebaseUser user = mAuth.getCurrentUser();
+
+
+//                            mAuth.getCurrentUser().getIdToken(false).addOnSuccessListener(new OnSuccessListener<GetTokenResult>() {
+//                                @Override
+//                                public void onSuccess(GetTokenResult getTokenResult) {
+//                                    long time = System.currentTimeMillis() - starttime;
+//
+//                                    Log.e("testt", "time " + time + ", token " + getTokenResult.getToken());
+//                                }
+//                            });
+                            Log.e("userrrrrr", user.getIdToken(false).getResult().getToken());
+
 //                            updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
