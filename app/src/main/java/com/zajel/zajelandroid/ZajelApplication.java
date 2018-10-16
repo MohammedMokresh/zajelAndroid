@@ -3,6 +3,7 @@ package com.zajel.zajelandroid;
 import android.app.Application;
 
 import com.cloudinary.android.MediaManager;
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.zajel.zajelandroid.BuildConfig;
 
 import java.util.HashMap;
@@ -21,7 +22,7 @@ public class ZajelApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
+        Fresco.initialize(this);
 
         Map config1 = new HashMap();
         config1.put("cloud_name", "zajel");

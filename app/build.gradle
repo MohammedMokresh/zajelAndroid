@@ -13,7 +13,7 @@ android {
 
         buildConfigField "String", "REALM_FILE_NAME", "\"zajelRealm.realm\""
         buildConfigField "int", "REALM_FILE_VERSION", "1"
-        buildConfigField "String", "BASE_URL", "\"https://zajel-staging.herokuapp.com/\""
+        buildConfigField "String", "BASE_URL", "\"https://zajel-staging.herokuapp.com/api/v1/\""
         vectorDrawables.useSupportLibrary = true
 
     }
@@ -22,6 +22,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 android {
@@ -42,14 +46,13 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
 
-
-
     //adding view model
     implementation 'android.arch.lifecycle:extensions:1.1.1'
     implementation 'android.arch.lifecycle:viewmodel:1.1.1'
 
     //adding paging
     implementation 'android.arch.paging:runtime:1.0.1'
+    implementation 'com.facebook.fresco:fresco:1.10.0'
 
     /*
      * Step 4: Adding retrofit to the app
@@ -70,11 +73,11 @@ dependencies {
     implementation 'com.google.android:flexbox:1.0.0'
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
 
-
 //    implementation 'com.jakewharton:butterknife:8.8.1'
 //    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     implementation 'com.jakewharton:butterknife:9.0.0-SNAPSHOT'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
+
 
 
     implementation 'com.google.firebase:firebase-messaging:17.3.2'

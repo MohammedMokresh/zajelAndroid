@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:fresco="http://schemas.android.com/tools">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/main_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/main_collapsing"
+            android:layout_width="match_parent"
+            android:minHeight="60dp"
+            android:layout_height="@dimen/expanded_toolbar_height"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <RelativeLayout
+                android:id="@+id/main_framelayout_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom">
+                <com.facebook.drawee.view.SimpleDraweeView
+                    android:id="@+id/background_ImageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp"
+                    fresco:placeholderImage="@drawable/my_drawable"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/main_linearlayout_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/spacing_small"
+                    android:weightSum="100">
+
+                    <ImageView
+                        android:id="@+id/book_ImageView"
+                        android:layout_width="@dimen/image_width"
+                        android:layout_height="0dp"
+                        android:layout_gravity="top|center_horizontal"
+                        android:layout_marginTop="@dimen/spacing_normal"
+                        android:layout_weight="60"
+                        android:src="@drawable/ninja" />
+
+                    <com.zajel.zajelandroid.BookList.AutoResizeTextView
+                        android:id="@+id/book_name_TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="20"
+                        android:fontFamily="@font/proxima_nova_bold"
+                        android:gravity="center_horizontal"
+                        android:text="asdasdasd"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/textsize_xlarge" />
+
+                    <com.zajel.zajelandroid.BookList.AutoResizeTextView
+                        android:id="@+id/author_name_TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/spacing_xxsmall"
+                        android:layout_weight="20"
+                        android:fontFamily="@font/proxima_nova_semi_bold"
+                        android:text="asjndja,bdkabdkabdkuabsd asdansd"
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_100"
+        android:scrollbars="none"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                android:padding="5dp"
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/texts_LinearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <TextView
+                            android:id="@+id/page_count_TextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/proxima_nova_regular"
+                            android:gravity="center_horizontal"
+                            android:text="65 page"
+                            android:textColor="@color/grey_800"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/language_TextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/proxima_nova_regular"
+                            android:gravity="center_horizontal"
+                            android:text="english"
+                            android:textColor="@color/grey_800"
+
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/publishing_year_TextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/proxima_nova_regular"
+                            android:gravity="center_horizontal"
+                            android:text="2016"
+                            android:textColor="@color/grey_800"
+                            android:textSize="14sp" />
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/genre_TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/texts_LinearLayout"
+                        android:fontFamily="@font/proxima_nova_regular"
+                        android:gravity="center_horizontal"
+                        android:text="Horror"
+                        android:textColor="@color/grey_800"
+
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/status_TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/genre_TextView"
+                        android:fontFamily="@font/proxima_nova_regular"
+                        android:gravity="center_horizontal"
+                        android:text="available"
+                        android:textColor="@color/grey_800"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                android:padding="5dp"
+                app:cardCornerRadius="5dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/proxima_nova_bold"
+                        android:lineSpacingExtra="@dimen/spacing_xsmall"
+                        android:padding="@dimen/spacing_normal"
+                        android:text="Description"
+                        android:textColor="@color/grey_800"
+                        android:textSize="@dimen/textsize_medium" />
+
+                    <TextView
+                        android:id="@+id/description_TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/proxima_nova_regular"
+                        android:lineSpacingExtra="@dimen/spacing_xsmall"
+                        android:padding="@dimen/spacing_normal"
+                        android:text=""
+                        android:textColor="@color/grey_800"
+                        android:textSize="@dimen/textsize_medium" />
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/main_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:visibility="invisible"
+        app:layout_anchor="@id/main_collapsing"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:gravity="center_horizontal"
+            android:paddingStart="-10dp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/book_name2_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:fontFamily="@font/proxima_nova_bold"
+                android:gravity="center_horizontal"
+                android:text="asdasdasd"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/textsize_xlarge" />
+
+            <TextView
+                android:id="@+id/author_name2_TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing_xxsmall"
+                android:fontFamily="@font/proxima_nova_semi_bold"
+                android:text="asjndja,bdkabdkabdkuabsd asdansd"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+
+
+        </LinearLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

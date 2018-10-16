@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/app_logo_ImageView"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/ic_launcher_background" />
+        app:srcCompat="@drawable/ic_launcher_background" />
 
 
     <LinearLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerVertical="true"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginTop="60dp"
+        android:layout_marginRight="20dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -27,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/email_EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp">
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/password_EditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,7 +61,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/login_Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -74,7 +75,7 @@
             android:textSize="16sp" />
 
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -82,7 +83,7 @@
             android:gravity="center"
             android:text="@string/or_sign_in_with"
             android:textColor="@color/colorPrimary"
-            android:textSize="13sp" />
+            android:textSize="15sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -91,14 +92,14 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/facebook_ImageView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="5dp"
                 android:src="@drawable/fb" />
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/google_ImageView"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -118,7 +119,7 @@
         android:layout_marginRight="20dp"
         android:orientation="horizontal">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/signup_TextView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -126,21 +127,21 @@
             android:fontFamily="@font/proxima_nova_semi_bold"
             android:text="@string/don_t_have_an_account"
             android:textColor="@color/colorPrimary"
-            android:textSize="13sp" />
+            android:textSize="15sp" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/forgot_password_TextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/proxima_nova_semi_bold"
             android:text="@string/forgot_password"
             android:textColor="@color/colorPrimary"
-            android:textSize="13sp"
+            android:textSize="15sp"
 
             />
     </LinearLayout>
     <com.google.android.gms.common.SignInButton
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/sign_in_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

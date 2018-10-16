@@ -11,14 +11,16 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.zajel.zajelandroid.APIManager.APIManager;
-import com.zajel.zajelandroid.Home.BooksFragment;
+import com.zajel.zajelandroid.BookList.BooksFragment;
+import com.zajel.zajelandroid.Profile.ProfileFragment;
+import com.zajel.zajelandroid.Requests.RequestsFragment;
+import com.zajel.zajelandroid.Wishlist.WishlistFragment;
 
-import androidx.annotation.IdRes;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
+import static com.zajel.zajelandroid.Utils.ZajelUtils.replaceFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     static Activity fa;
@@ -58,14 +60,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                .setButtonDoNotShowAgain("");
 //        appUpdater.start();
 //    }
-    public static void replaceFragment(FragmentManager fragmentManager,
-                                       @IdRes int containerID,
-                                       Fragment newFragment) {
 
-        androidx.fragment.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(containerID, newFragment);
-        fragmentTransaction.commit();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 );
                 params3.setMargins(0, 0, 0, 0);
                 mainframeLayout.setLayoutParams(params3);
-
+                replaceFragment(getSupportFragmentManager(), R.id.main_content_frameLayout, BooksFragment.newInstance());
 //                FragmentSwitcher.replaceFragment(getSupportFragmentManager(), R.id.main_content_frameLayout, new NewSearchFragment());
 
                 break;
@@ -140,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 );
                 params.setMargins(0, 0, 0, px);
                 mainframeLayout.setLayoutParams(params);
-
+                replaceFragment(getSupportFragmentManager(), R.id.main_content_frameLayout, RequestsFragment.newInstance());
 //                FragmentSwitcher.replaceFragment(getSupportFragmentManager(), R.id.main_content_frameLayout, new ViewedMeFrag());
 
 
@@ -168,6 +163,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 );
                 params2.setMargins(0, 0, 0, px2);
                 mainframeLayout.setLayoutParams(params2);
+                replaceFragment(getSupportFragmentManager(), R.id.main_content_frameLayout, WishlistFragment.newInstance());
 
 //                FragmentSwitcher.replaceFragment(getSupportFragmentManager(), R.id.main_content_frameLayout, new FavouriteFragment());
                 break;
@@ -194,8 +190,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         RelativeLayout.LayoutParams.MATCH_PARENT
                 );
                 paramsProfile.setMargins(0, 0, 0, pxProfile);
+
                 mainframeLayout.setLayoutParams(paramsProfile);
-//                FragmentSwitcher.replaceFragment(getSupportFragmentManager(), R.id.main_content_frameLayout, new NewProfileFragment());
+                replaceFragment(getSupportFragmentManager(), R.id.main_content_frameLayout, ProfileFragment.newInstance());
 
                 break;
 

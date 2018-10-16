@@ -11,6 +11,10 @@ import java.lang.reflect.Method;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import androidx.annotation.IdRes;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
 public class ZajelUtils {
 
     public static boolean isEmailValid(String email) {
@@ -36,5 +40,14 @@ public class ZajelUtils {
         Point point = new Point();
         window.getDefaultDisplay().getSize(point);
         return point.x;
+    }
+
+    public static void replaceFragment(FragmentManager fragmentManager,
+                                       @IdRes int containerID,
+                                       Fragment newFragment) {
+
+        androidx.fragment.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(containerID, newFragment);
+        fragmentTransaction.commit();
     }
 }

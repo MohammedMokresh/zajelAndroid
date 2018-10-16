@@ -89,6 +89,18 @@ public class ValidateUtil  {
         return true;
     }
 
+    public static boolean validateEmptyField(EditText editText , TextInputLayout textInputLayout,Activity activity,String msg) {
+        if (editText.getText().toString().trim().isEmpty()) {
+            textInputLayout.setError(msg);
+            requestFocus(editText,activity);
+            return false;
+        } else {
+            textInputLayout.setErrorEnabled(false);
+        }
+
+        return true;
+    }
+
     private static void requestFocus(View view, Activity context) {
         if (view.requestFocus()) {
            context.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);

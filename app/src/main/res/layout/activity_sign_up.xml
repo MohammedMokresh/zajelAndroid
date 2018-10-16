@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -22,7 +23,7 @@
                 android:id="@+id/zoologo"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_launcher_background" />
+                app:srcCompat="@drawable/ic_launcher_background" />
 
             <LinearLayout
                 android:id="@+id/sign_in_LinearLayout"
@@ -70,6 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            android:layout_marginBottom="5dp"
             android:weightSum="2">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -84,7 +86,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/proxima_nova_regular"
-                    android:hint="First Name"
+                    android:hint="First name"
                     android:inputType="text"
                     android:textColor="@color/colorPrimary"
                     android:textSize="14sp" />
@@ -103,7 +105,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/proxima_nova_regular"
-                    android:hint="Last Name"
+                    android:hint="Last name"
                     android:inputType="text"
                     android:textColor="@color/colorPrimary"
                     android:textSize="14sp" />
@@ -116,6 +118,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/email_TextInputLayout"
             android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+
             android:layout_height="wrap_content">
 
             <EditText
@@ -135,6 +139,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/password_TextInputLayout"
             android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+
             android:layout_height="wrap_content">
 
             <EditText
@@ -151,6 +157,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/confirm_password_TextInputLayout"
             android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+
             android:layout_height="wrap_content"
 
             >
@@ -160,7 +168,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/proxima_nova_regular"
-                android:hint="Confirm pass"
+                android:hint="Confirm password"
                 android:inputType="textPassword"
                 android:textColor="@color/colorPrimary"
                 android:textSize="14sp" />
@@ -169,6 +177,8 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/date_TextInputLayout"
             android:layout_width="match_parent"
+            android:layout_marginBottom="5dp"
+
             android:layout_height="wrap_content">
 
             <EditText
@@ -179,7 +189,7 @@
                 android:fontFamily="@font/proxima_nova_regular"
                 android:textColor="@color/colorPrimary"
                 android:textSize="14sp"
-                android:hint="Date of Birth"
+                android:hint="Date of birth"
                 android:inputType="date" />
 
 
@@ -197,6 +207,7 @@
             android:textAllCaps="false"
             android:textColor="#cbd1dc"
             android:textSize="16sp"
+            android:stateListAnimator="@null"
             />
 
 
@@ -206,6 +217,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/ter"
             android:gravity="center"
+            android:visibility="gone"
             android:orientation="horizontal"
             android:padding="16dp">
 
@@ -239,6 +251,7 @@
             android:id="@+id/terms_TextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="@string/by_signing_up_you_agree_with_our_terms_and_conditions"
             android:textColor="#a9b0c3"

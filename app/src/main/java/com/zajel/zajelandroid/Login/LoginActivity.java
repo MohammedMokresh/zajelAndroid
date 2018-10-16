@@ -2,10 +2,6 @@ package com.zajel.zajelandroid.Login;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import com.google.android.material.textfield.TextInputLayout;
-import androidx.appcompat.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -24,18 +20,29 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.gson.JsonElement;
 import com.zajel.zajelandroid.APIManager.APIManager;
+import com.zajel.zajelandroid.BookList.BookDetailsActivity;
+import com.zajel.zajelandroid.Dialogs.DialogUtil;
+import com.zajel.zajelandroid.Login.GoogleSignInModels.GoogleUser;
+import com.zajel.zajelandroid.Login.GoogleSignInModels.User;
+import com.zajel.zajelandroid.MainActivity;
 import com.zajel.zajelandroid.PreferenceManager;
 import com.zajel.zajelandroid.R;
 import com.zajel.zajelandroid.SignUp.ActivitySignUp;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRespnseBody;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import okhttp3.Headers;
@@ -50,23 +57,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     @BindView(R.id.signup_TextView)
-    TextView signUpTextView;
+    AppCompatTextView signUpTextView;
     @BindView(R.id.forgot_password_TextView)
-    TextView forgotPasswordTextView;
+    AppCompatTextView forgotPasswordTextView;
     @BindView(R.id.email_EditText)
-    EditText emailEditText;
+    AppCompatEditText emailEditText;
     @BindView(R.id.password_EditText)
-    EditText passwordEditText;
+    AppCompatEditText passwordEditText;
     @BindView(R.id.email_TextInputLayout)
     TextInputLayout emailTextInputLayout;
     @BindView(R.id.password_TextInputLayout)
     TextInputLayout passwordTextInputLayout;
     @BindView(R.id.facebook_ImageView)
-    ImageView facebookImageView;
+    AppCompatImageView facebookImageView;
     @BindView(R.id.google_ImageView)
-    ImageView googleImageView;
+    AppCompatImageView googleImageView;
     @BindView(R.id.login_Button)
-    Button loginButton;
+    AppCompatButton loginButton;
     @BindView(R.id.sign_in_button)
     SignInButton googleSignInButton;
 
@@ -75,6 +82,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     PreferenceManager preferenceManager;
     APIManager apiManager;
     GoogleSignInClient mGoogleSignInClient;
+    FirebaseUser user;
     private FirebaseAuth mAuth;
 
     @Override
@@ -82,8 +90,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
-
-
         mAuth = FirebaseAuth.getInstance();
         googleSignInButton.setOnClickListener(this);
         forgotPasswordTextView.setOnClickListener(this);
@@ -97,7 +103,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         apiManager.setLoginResponse(this);
         apiManager.setGoogleLogInResponse(this);
         preferenceManager = PreferenceManager.getInstance();
-
 
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -121,10 +126,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
         try {
-
+            DialogUtil.showProgressDialog("Signing in ...",getSupportFragmentManager());
             LogInRequestBody logInRequestBody = new LogInRequestBody(email, pass);
             apiManager.logIn(logInRequestBody);
-        } catch (NullPointerException e) {
+        } catch (NullPointerException ignore) {
 
         }
     }
@@ -142,22 +147,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.facebook_ImageView:
-                Log.e("clicked", "click face");
                 break;
 
             case R.id.google_ImageView:
-                Log.e("clicked", "click");
+                DialogUtil.showProgressDialog("Loading...",getSupportFragmentManager());
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN);
 
-//                googleSignInButton.callOnClick();
-//                googleSignInButton.performClick();
-//                facebookImageView.performClick();
-
-//                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-//                startActivityForResult(signInIntent, RC_SIGN_IN);
-
-//                apiManager.googleLogIn();
                 break;
 
             case R.id.signup_TextView:
@@ -171,11 +167,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 break;
 
-            case R.id.sign_in_button:
-                Log.e("clicked", "click sign");
-//                Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-//                startActivityForResult(signInIntent, RC_SIGN_IN);
-                break;
 
         }
     }
@@ -183,6 +174,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void getLoginResponse(SignUpRespnseBody signUpRespnseBody) {
 
+        DialogUtil.removeProgressDialog();
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(i);
+        finish();
     }
 
     @Override
@@ -196,21 +191,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    public void getLoginResponse(JsonElement jsonElement) {
-        Log.e("test", "res");
-//        Log.e("test",jsonElement.toString());
-    }
-
-    @Override
     public void errorOccureLogin() {
-        Log.e("test", "error");
-
+        DialogUtil.removeProgressDialog();
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             // The Task returned from this call is always completed, no need to attach
@@ -220,28 +207,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
 
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            Log.e("test", account.getId());
             firebaseAuthWithGoogle(account);
-            // Signed in successfully, show authenticated UI.
-//            updateUI(account);
-        } catch (ApiException e) {
-            Log.e("tesssst", e.getLocalizedMessage());
-            // The ApiException status code indicates the detailed failure reason.
-            // Please refer to the GoogleSignInStatusCodes class reference for more information.
-//            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-//            updateUI(null);
+        } catch (ApiException ignore) {
         }
     }
 
-    FirebaseUser user ;
-    private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Log.e("sdsds", "firebaseAuthWithGoogle:" + acct.getIdToken());
-        final Long starttime= System.currentTimeMillis();
+    private void firebaseAuthWithGoogle(final GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -249,31 +224,39 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     public void onComplete(@NonNull final Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
-                            Log.e("sdsds", "signInWithCredential:success");
                             final FirebaseUser user = mAuth.getCurrentUser();
 
-
-//                            mAuth.getCurrentUser().getIdToken(false).addOnSuccessListener(new OnSuccessListener<GetTokenResult>() {
-//                                @Override
-//                                public void onSuccess(GetTokenResult getTokenResult) {
-//                                    long time = System.currentTimeMillis() - starttime;
-//
-//                                    Log.e("testt", "time " + time + ", token " + getTokenResult.getToken());
-//                                }
-//                            });
-                            Log.e("userrrrrr", user.getIdToken(false).getResult().getToken());
-
-//                            updateUI(user);
+                            GoogleUser googleUser = new GoogleUser(new User(user.getIdToken(false).getResult().getToken()));
+                            apiManager.googleLogIn(googleUser);
                         } else {
-                            // If sign in fails, display a message to the user.
-                            Log.e("sdsds", "signInWithCredential:failure", task.getException());
                             Toast.makeText(getApplicationContext(), "Authentication Failed.", Toast.LENGTH_LONG).show();
-//                            updateUI(null);
                         }
 
-                        // ...
                     }
                 });
+    }
+
+    @Override
+    public void getGoogleLoginResponse(SignUpRespnseBody jsonElement) {
+        DialogUtil.removeProgressDialog();
+        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        startActivity(i);
+        finish();
+
+    }
+
+    @Override
+    public void getGoogleLoginHeaders(Headers headers) {
+        preferenceManager.setAccessToken(headers.get("Access-Token"));
+        preferenceManager.setClient(headers.get("Client"));
+        preferenceManager.setExpiry(headers.get("Expiry"));
+        preferenceManager.setUid(headers.get("Uid"));
+        preferenceManager.setTokenType(headers.get("Token-Type"));
+    }
+
+    @Override
+    public void errorOccureGoogleLogin() {
+        DialogUtil.removeProgressDialog();
     }
 
     private class MyTextWatcher implements TextWatcher {

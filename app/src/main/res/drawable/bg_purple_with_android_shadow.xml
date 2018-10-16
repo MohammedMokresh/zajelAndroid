@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Drop Shadow Stack -->
+    <item>
+        <shape>
+            <padding android:top=".6dp" android:right="1.1dp" android:bottom="1.1dp" android:left="0.6dp" />
+            <solid android:color="#00CCCCCC" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding android:top=".6dp" android:right="1.1dp" android:bottom="1.1dp" android:left="0.6dp" />
+            <solid android:color="#10CCCCCC" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding android:top=".6dp" android:right="1.1dp" android:bottom="1.1dp" android:left="0.6dp" />
+            <solid android:color="#20CCCCCC" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding android:top=".6dp" android:right="1.1dp" android:bottom="1.1dp" android:left="0.6dp" />
+            <solid android:color="#30CCCCCC" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding android:top=".6dp" android:right="1.1dp" android:bottom="1.1dp" android:left="0.6dp" />
+            <solid android:color="#50CCCCCC" />
+        </shape>
+    </item>
+
+    <!-- Background -->
+    <item>
+        <shape>
+            <solid android:color="@color/medium_purple" />
+            <corners android:radius="0dp" />
+        </shape>
+    </item>
+</layer-list>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android">-->
+    <!--<item-->
+        <!--android:bottom="3dp"-->
+        <!--android:drawable="@android:drawable/dialog_holo_light_frame"-->
+        <!--android:left="2.7dp"-->
+        <!--android:right="1.8dp"-->
+        <!--android:top="2dp">-->
+    <!--</item>-->
+
+    <!--<item-->
+        <!--android:bottom="0dp"-->
+        <!--android:left="0dp"-->
+        <!--android:right="0dp"-->
+        <!--android:top="0dp">-->
+        <!--<shape android:shape="rectangle">-->
+            <!--<solid android:color="@color/medium_purple" />-->
+        <!--</shape>-->
+    <!--</item>-->
+<!--</layer-list>-->

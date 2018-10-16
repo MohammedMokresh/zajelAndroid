@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sent_request_relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:background="@color/grey_0">
+
+    <LinearLayout
+        android:id="@+id/ly_job"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical"
+        android:weightSum="2">
+
+
+        <RelativeLayout
+            android:id="@+id/ll_job_details_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/book_ImageView"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="10dp"
+                android:adjustViewBounds="true"
+                android:background="@drawable/bg_white_with_android_shadow"
+                android:maxWidth="70dp"
+                android:maxHeight="70dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/camera_icon" />
+
+
+            <LinearLayout
+                android:id="@+id/clicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_toEndOf="@+id/book_ImageView"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/book_name_TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:ellipsize="marquee"
+                    android:maxLines="3"
+                    android:scrollHorizontally="false"
+                    android:text="Android Developer"
+                    android:textColor="@color/black_job_list_job_details"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/author_TextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:ellipsize="marquee"
+                        android:paddingEnd="5dp"
+                        android:singleLine="true"
+                        android:text="Jackie"
+                        android:textColor="@color/grey_job_list_job_company_title"
+                        android:textSize="14sp" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/btn_request"
+        android:layout_alignParentStart="true"
+        android:background="@color/grey_job_list_separator" />
+
+
+    <Button
+        android:id="@+id/btn_request"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/ly_job"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_rounded_white_with_purple_borders"
+        android:text="Request Pending"
+        android:textColor="@color/purple_500"
+        android:textSize="13sp" />
+
+    <View
+        android:id="@+id/separator2"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_below="@+id/btn_request"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:background="@color/grey_job_list_separator" />
+
+</RelativeLayout>

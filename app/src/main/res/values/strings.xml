@@ -5,9 +5,9 @@
     <string name="password">Password</string>
 
     <string name="you_don_t_have_account">You don\'t have account?</string>
-    <string name="sign_up">Sign Up</string>
+    <string name="sign_up">Sign up</string>
     <string name="or_sign_in_with">or sign in with :</string>
-    <string name="confirm_password">Confirm Password</string>
+    <string name="confirm_password">Confirm password</string>
     <string name="already_a_member">Already a member?</string>
     <string name="invalid_email">Please insert valid Email</string>
     <string name="password_empty">Please the password should not be empty</string>
@@ -134,7 +134,7 @@
     <string name="tehran_branch">Tehran branch</string>
     <string name="beneficiary_bank">Beneficiary Bank</string>
     <string name="swift_code">Swift Code</string>
-    <string name="card_number">Card Number</string>
+    <string name="card_number">Card number</string>
     <string name="id_number">ID Number</string>
     <string name="bank_number">Bank Number</string>
     <string name="old_password">Old Password</string>
@@ -142,8 +142,8 @@
     <string name="new_password">New Password</string>
     <string name="update">Update</string>
     <string name="logout">Logout</string>
-    <string name="change_password">Change Password</string>
-    <string name="forgot_password">Forgot Password?</string>
+    <string name="change_password">Change password</string>
+    <string name="forgot_password">Forgot password?</string>
     <string name="reset_password">Reset Password</string>
     <string name="email">Email</string>
     <string name="do_you_want_to_save_this_transaction_in_favourites">Do you want to save this transaction in favourites?</string>
@@ -154,8 +154,8 @@
     <string name="beneficiary_id">Beneficiary Id</string>
     <string name="recipe">Recipe</string>
     <string name="cancel">Cancel</string>
-    <string name="book">Book</string>
-    <string name="are_you_sure_you_want_to_book_this_currency">Are you sure you want to book this currency?</string>
+    <string name="requestBook">Book</string>
+    <string name="are_you_sure_you_want_to_book_this_currency">Are you sure you want to requestBook this currency?</string>
     <string name="are_you_sure_you_want_to_request_bank_this_currency">Please choose the bank that you want yo request</string>
     <string name="are_you_sure_you_want_to_cancel_this_booking">Are you sure you want to cancel this Booking?</string>
     <string name="booking">Booking</string>
@@ -180,9 +180,22 @@
     <string name="asset_statements" translatable="false">[{\n  \"relation\": [\"delegate_permission/common.handle_all_urls\"],\n  \"target\": {\n    \"namespace\": \"web\",\n    \"site\": \"https://admin.zandexchange.com\",\n  }\n}]</string>
 
     <string name="login">Login</string>
-    <string name="don_t_have_an_account">Don\'t Have An Account ?</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
     <string name="signin">Signin</string>
     <string name="by_signing_up_you_agree_with_our_terms_and_conditions">By Signing up you agree with our terms and conditions</string>
+    <string name="dummy">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</string>
+    <string name="title">Title</string>
+    <string name="author">Author</string>
+    <string name="page_count">Page Count</string>
+    <string name="description">Description</string>
+    <string name="language">Language</string>
+    <string name="genre">Genre</string>
+
+    <string name="title_empty">Title should not be empty</string>
+    <string name="author_empty">Author should not be empty</string>
+    <string name="publish_year_empty">Publish year should not be empty</string>
+    <string name="page_count_empty">Page count should not be empty</string>
+    <string name="description_empty">Description should not be empty</string>
 
 
 </resources>
