@@ -91,17 +91,17 @@ public class NetworkService {
 
         @GET(TABLE_BOOK_ACTIVITIES)
         Call<Requests> getSentRequests(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
-                String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Query("borrower_id") Integer borrowerId);
+                String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept,@Query("borrower") String borrower );
 
         @GET(TABLE_BOOK_ACTIVITIES)
         Call<Requests> getReceivedRequests(@Header("Access-Token") String accessToken, @Header("Client") String client ,@Header("Expiry")
-                String expiry ,@Header("Uid") String uid,@Header("Token-Type") String tokenType,@Header("Content-Type") String contentType, @Header("Accept") String accept, @Query("lender_id") Integer lenderId);
+                String expiry ,@Header("Uid") String uid,@Header("Token-Type") String tokenType,@Header("Content-Type") String contentType, @Header("Accept") String accept,@Query("lender") String lender);
 
 
 
         @GET(TABLE_WISHLIST)
         Call<WishListResponseBody> getWishlist(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
-                String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Query("user_id") Integer userId);
+                String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept);
 
 
 

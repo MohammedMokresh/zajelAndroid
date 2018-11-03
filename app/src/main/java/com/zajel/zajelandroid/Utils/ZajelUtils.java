@@ -8,6 +8,10 @@ import android.widget.DatePicker;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -50,4 +54,18 @@ public class ZajelUtils {
         fragmentTransaction.replace(containerID, newFragment);
         fragmentTransaction.commit();
     }
+    public static String stringToDateGetTheYear(String dateString){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date = format.parse(dateString);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(date);
+            return String.valueOf(cal.get(Calendar.YEAR));
+        } catch (ParseException e) {
+            return "";
+
+        }
+    }
+
+
 }

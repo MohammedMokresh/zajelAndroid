@@ -2,6 +2,7 @@ package com.zajel.zajelandroid.Requests;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -10,10 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.flexbox.FlexboxLayout;
 import com.squareup.picasso.Picasso;
+import com.zajel.zajelandroid.BookList.BookDetailsActivity;
 import com.zajel.zajelandroid.R;
 import com.zajel.zajelandroid.Requests.RequestsModels.BookActivity;
 import com.zajel.zajelandroid.Requests.RequestsModels.Requests;
@@ -34,12 +37,12 @@ public class SentRequestAdapter extends RecyclerView.Adapter<SentRequestAdapter.
         public TextView bookNameTextView, authorTextView;
         public ImageView bookImageView;
 
-
+        RelativeLayout sentRequestRelativeLayout;
         Button status;
 
         public SentRequestAdapterHolder(View view) {
             super(view);
-
+            sentRequestRelativeLayout=view.findViewById(R.id.sent_request_relativeLayout);
             bookNameTextView =  view.findViewById(R.id.book_name_TextView);
             authorTextView =  view.findViewById(R.id.author_TextView);
             status =  view.findViewById(R.id.btn_request);
@@ -66,6 +69,24 @@ public class SentRequestAdapter extends RecyclerView.Adapter<SentRequestAdapter.
             holder.bookNameTextView.setText(requestsList.get(position).getBook().getTitle());
             holder.authorTextView.setText(requestsList.get(position).getBook().getAuthor());
         Picasso.with(context).load(requestsList.get(position).getBook().getImage()).into(holder.bookImageView);
+
+        holder.sentRequestRelativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(context,BookDetailsActivity.class);
+                i.putExtra("image",requestsList.get(position).getBook().getImage());
+                i.putExtra("bookName",requestsList.get(position).getBook().getTitle());
+                i.putExtra("author",requestsList.get(position).getBook().getAuthor());
+                i.putExtra("pageCount",requestsList.get(position).getBook().getPageNumber().toString());
+                i.putExtra("language",requestsList.get(position).getBook().getLanguage());
+                i.putExtra("publishingYear",requestsList.get(position).getBook().getPublishingYear());
+                i.putExtra("genre",requestsList.get(position).getBook().getGenre());
+                i.putExtra("status",requestsList.get(position).getBook().getStatus());
+                i.putExtra("description",requestsList.get(position).getBook().getDescription());
+                context.startActivity(i);
+
+            }
+        });
 
     }
 

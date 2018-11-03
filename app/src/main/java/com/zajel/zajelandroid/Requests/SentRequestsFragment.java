@@ -49,14 +49,14 @@ public class SentRequestsFragment extends Fragment implements  APIManager.Reques
 
         apiManager= new APIManager(getContext());
         apiManager.setRequestsResponse(this);
-        apiManager.getSendRequest(1);
+        apiManager.getSendRequest();
         requestsList= new ArrayList<>();
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         sentRequestRecyclerView.setLayoutManager(mLayoutManager);
         swipeToRefresh.setRefreshing(true);
 
-        swipeToRefresh.setOnRefreshListener(() -> apiManager.getSendRequest(1));
+        swipeToRefresh.setOnRefreshListener(() -> apiManager.getSendRequest());
         return v;
     }
 

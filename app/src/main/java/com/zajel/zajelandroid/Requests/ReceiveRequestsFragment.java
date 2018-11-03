@@ -50,7 +50,7 @@ public class ReceiveRequestsFragment extends Fragment implements  APIManager.Req
         ButterKnife.bind(this,v);
         apiManager= new APIManager(getContext());
         apiManager.setRequestsResponse(this);
-        apiManager.getReceiveRequest(6);
+        apiManager.getReceiveRequest();
         requestsList= new ArrayList<>();
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         receiveRequestRecyclerView.setLayoutManager(mLayoutManager);
@@ -59,7 +59,7 @@ public class ReceiveRequestsFragment extends Fragment implements  APIManager.Req
         swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                apiManager.getReceiveRequest(6);
+                apiManager.getReceiveRequest();
             }
         });
         return v;

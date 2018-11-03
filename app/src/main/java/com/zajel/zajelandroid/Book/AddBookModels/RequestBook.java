@@ -27,9 +27,6 @@ public class RequestBook {
     @SerializedName("genre")
     @Expose
     private String genre;
-    @SerializedName("user_id")
-    @Expose
-    private Integer userId;
 
 
 
@@ -65,7 +62,6 @@ public class RequestBook {
         this.pageNumber = pageNumber;
         this.image = image;
         this.genre = genre;
-        this.userId = userId;
         this.status = status;
     }
 
@@ -133,14 +129,6 @@ public class RequestBook {
 
     public void setGenre(String genre) {
         this.genre = genre;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
     }
 
 }

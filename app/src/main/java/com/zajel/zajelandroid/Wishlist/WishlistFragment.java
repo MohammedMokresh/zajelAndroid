@@ -58,7 +58,7 @@ public class WishlistFragment extends Fragment  implements APIManager.WishlistRe
         ButterKnife.bind(this,v);
         apiManager= new APIManager(getContext());
         apiManager.setWishlistResponse(this);
-        apiManager.getWishlist(1);
+        apiManager.getWishlist();
 
 
         wishlistList= new ArrayList<>();
@@ -69,7 +69,7 @@ public class WishlistFragment extends Fragment  implements APIManager.WishlistRe
         swipeToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                apiManager.getWishlist(1);
+                apiManager.getWishlist();
             }
         });
         return v;

@@ -18,9 +18,9 @@ public class BookActivity {
     @SerializedName("lender")
     @Expose
     private Lender lender;
-    @SerializedName("approved")
+    @SerializedName("status")
     @Expose
-    private Boolean approved;
+    private String approved;
 
     /**
      * No args constructor for use in serialization
@@ -37,7 +37,7 @@ public class BookActivity {
      * @param book
      * @param lender
      */
-    public BookActivity(Integer id, Book book, Borrower borrower, Lender lender, Boolean approved) {
+    public BookActivity(Integer id, Book book, Borrower borrower, Lender lender, String approved) {
         super();
         this.id = id;
         this.book = book;
@@ -78,11 +78,11 @@ public class BookActivity {
         this.lender = lender;
     }
 
-    public Boolean getApproved() {
+    public String getApproved() {
         return approved;
     }
 
-    public void setApproved(Boolean approved) {
+    public void setApproved(String approved) {
         this.approved = approved;
     }
 

@@ -1,6 +1,7 @@
 package com.zajel.zajelandroid.Wishlist;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -10,10 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.flexbox.FlexboxLayout;
 import com.squareup.picasso.Picasso;
+import com.zajel.zajelandroid.BookList.BookDetailsActivity;
 import com.zajel.zajelandroid.R;
 import com.zajel.zajelandroid.Wishlist.WishlistModels.Wishlist;
 
@@ -43,11 +46,35 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
 
     @Override
     public void onBindViewHolder(final WishListAdapter.WishListAdapterHolder holder, final int position) {
+
         holder.bookNameTextView.setText(whishlist.get(position).getBook().getTitle());
         holder.bookOwnerTextView.setText(whishlist.get(position).getBook().getAuthor());
         Picasso.with(context).load(whishlist.get(position).getBook().getImage()).into(holder.bookImageView);
 
         createStatusChip(holder.statusChip,position);
+
+
+        holder.wishListRelativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i= new Intent(context,BookDetailsActivity.class);
+                i.putExtra("image",whishlist.get(position).getBook().getImage());
+                i.putExtra("bookName",whishlist.get(position).getBook().getTitle());
+                i.putExtra("author",whishlist.get(position).getBook().getAuthor());
+                i.putExtra("pageCount",whishlist.get(position).getBook().getPageNumber().toString());
+                i.putExtra("language",whishlist.get(position).getBook().getLanguage());
+                i.putExtra("publishingYear",whishlist.get(position).getBook().getPublishingYear());
+                i.putExtra("genre",whishlist.get(position).getBook().getGenre());
+                i.putExtra("status",whishlist.get(position).getBook().getStatus());
+                i.putExtra("description",whishlist.get(position).getBook().getDescription());
+
+                context.startActivity(i);
+            }
+        });
+
+
+
 
     }
 
@@ -101,7 +128,7 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
         public TextView bookNameTextView, bookOwnerTextView;
         public ImageView bookImageView;
         public FlexboxLayout statusChip;
-
+        public RelativeLayout wishListRelativeLayout;
         public WishListAdapterHolder(View view) {
             super(view);
 
@@ -109,6 +136,7 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
             bookOwnerTextView = view.findViewById(R.id.book_owner_name_TextView);
             bookImageView = view.findViewById(R.id.book_ImageView);
             statusChip = view.findViewById(R.id.status_chips);
+            wishListRelativeLayout= view.findViewById(R.id.wishList_RelativeLayout);
 
         }
     }

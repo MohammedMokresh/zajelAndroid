@@ -2,6 +2,8 @@ package com.zajel.zajelandroid.BookList;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,17 +45,28 @@ public class BooksAdapter  extends PagedListAdapter<Book, BooksAdapter.ItemViewH
             rlp.width = ViewGroup.LayoutParams.MATCH_PARENT;
             if (position == 1) {
                 holder.setIsRecyclable(false);
-                rlp.height = 1000;
+                Resources r = mCtx.getResources();
+                int px = (int) TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP,
+                        290,
+                        r.getDisplayMetrics()
+                );
+                rlp.height = px;
             } else {
                 holder.setIsRecyclable(true);
-                rlp.height = 800;
+                Resources r = mCtx.getResources();
+                int px = (int) TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP,
+                        250,
+                        r.getDisplayMetrics()
+                );
+                rlp.height = px;
             }
 
             holder.searchItemCardView.setLayoutParams(rlp);
             Picasso.with(mCtx)
                     .load(item.getImage())
                     .fit()
-                    .centerCrop()
                     .into(holder.dynamicHeightImageView);
 
 

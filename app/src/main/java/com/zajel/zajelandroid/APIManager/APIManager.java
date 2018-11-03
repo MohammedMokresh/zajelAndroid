@@ -301,9 +301,9 @@ public class APIManager {
         void errorOccureRequest();
     }
 
-    public void getSendRequest(Integer  borrowerId) {
+    public void getSendRequest() {
         networkService.getAPI().getSentRequests(preferenceManager.getAccessToken(),preferenceManager.getClient()
-                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,borrowerId).enqueue(new Callback<Requests>() {
+                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,"true").enqueue(new Callback<Requests>() {
             @Override
             public void onResponse(@NonNull Call<Requests> call, @NonNull Response<Requests> response) {
                 if (response.body() != null && response.code() == HttpURLConnection.HTTP_OK) {
@@ -330,9 +330,9 @@ public class APIManager {
     }
 
 
-    public void getReceiveRequest(Integer  lenderId) {
+    public void getReceiveRequest() {
         networkService.getAPI().getReceivedRequests(preferenceManager.getAccessToken(),preferenceManager.getClient()
-                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,lenderId).enqueue(new Callback<Requests>() {
+                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,"true").enqueue(new Callback<Requests>() {
             @Override
             public void onResponse(@NonNull Call<Requests> call, @NonNull Response<Requests> response) {
                 if (response.body() != null && response.code() == HttpURLConnection.HTTP_OK) {
@@ -377,9 +377,9 @@ public class APIManager {
         void errorOccureWishlist();
     }
 
-    public void getWishlist(Integer  userId) {
+    public void getWishlist() {
         networkService.getAPI().getWishlist(preferenceManager.getAccessToken(),preferenceManager.getClient()
-                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,userId).enqueue(new Callback<WishListResponseBody>() {
+                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT).enqueue(new Callback<WishListResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<WishListResponseBody> call, @NonNull Response<WishListResponseBody> response) {
                 if (response.body() != null && response.code() == HttpURLConnection.HTTP_OK) {
