@@ -90,11 +90,10 @@
         app:layout_constraintBottom_toBottomOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-    <ImageView
+    <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/book_ImageView"
         android:layout_width="@dimen/image_width"
         android:layout_height="200dp"
-        android:src="@drawable/ninja"
         app:layout_constraintBottom_toBottomOf="@+id/big_image_RelativeLayout"
         app:layout_constraintStart_toStartOf="@id/guideline_vertical_image_margin" />
 
@@ -286,6 +285,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/proxima_nova_regular"
         android:lineSpacingExtra="@dimen/spacing_xsmall"
+        android:scrollbars="vertical"
         android:text="asdasdasdasd"
         android:textColor="@color/grey_800"
         android:textSize="@dimen/textsize_medium"
@@ -293,4 +293,19 @@
         app:layout_constraintTop_toBottomOf="@+id/genre_ConstraintLayout" />
 
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/boorow_book_Button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_rounded_dark_red"
+        android:fontFamily="@font/proxima_nova_bold"
+        android:text="Borrow"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

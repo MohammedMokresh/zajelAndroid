@@ -4,12 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -27,7 +22,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.zajel.zajelandroid.APIManager.APIManager;
-import com.zajel.zajelandroid.BookList.BookDetailsActivity;
 import com.zajel.zajelandroid.Dialogs.DialogUtil;
 import com.zajel.zajelandroid.Login.GoogleSignInModels.GoogleUser;
 import com.zajel.zajelandroid.Login.GoogleSignInModels.User;
@@ -126,7 +120,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             return;
         }
         try {
-            DialogUtil.showProgressDialog("Signing in ...",getSupportFragmentManager());
+            DialogUtil.showProgressDialog("Signing in ...", getSupportFragmentManager());
             LogInRequestBody logInRequestBody = new LogInRequestBody(email, pass);
             apiManager.logIn(logInRequestBody);
         } catch (NullPointerException ignore) {
@@ -150,7 +144,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
 
             case R.id.google_ImageView:
-                DialogUtil.showProgressDialog("Loading...",getSupportFragmentManager());
+                DialogUtil.showProgressDialog("Loading...", getSupportFragmentManager());
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN);
 
@@ -175,7 +169,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void getLoginResponse(SignUpRespnseBody signUpRespnseBody) {
 
         DialogUtil.removeProgressDialog();
-        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
         finish();
     }
@@ -239,7 +233,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void getGoogleLoginResponse(SignUpRespnseBody jsonElement) {
         DialogUtil.removeProgressDialog();
-        Intent i = new Intent(getApplicationContext(),MainActivity.class);
+        Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
         finish();
 

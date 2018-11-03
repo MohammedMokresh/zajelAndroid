@@ -2,6 +2,8 @@ package com.zajel.zajelandroid.APIManager;
 
 import com.zajel.zajelandroid.Book.AddBookModels.AddBookRequestModel;
 import com.zajel.zajelandroid.Book.AddBookModels.AddBookResponseModel;
+import com.zajel.zajelandroid.BookList.Borrow.BorrowAndCancelBookResponseBody.BorrowBookResponseBody;
+import com.zajel.zajelandroid.BookList.Borrow.BorrowBookRequestBody.BorrowBookRequestBody;
 import com.zajel.zajelandroid.BuildConfig;
 import com.zajel.zajelandroid.BookList.BooksModels.Books;
 import com.zajel.zajelandroid.Login.GoogleSignInModels.GoogleUser;
@@ -103,6 +105,17 @@ public class NetworkService {
         Call<WishListResponseBody> getWishlist(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
                 String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept);
 
+
+
+            /////
+        @GET(TABLE_BOOK_ACTIVITIES)
+        Call<BorrowBookResponseBody> boorowBook(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
+                String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Body BorrowBookRequestBody borrowBookRequestBody);
+
+
+        @GET(TABLE_BOOK_ACTIVITIES+"/{id}")
+        Call<BorrowBookResponseBody> cancelBorrow(@Header("Access-Token") String accessToken, @Header("Client") String client ,@Header("Expiry")
+                String expiry ,@Header("Uid") String uid,@Header("Token-Type") String tokenType,@Header("Content-Type") String contentType, @Header("Accept") String accept,@Query("id") Integer bookId);
 
 
     }

@@ -6,6 +6,8 @@ import android.util.Log;
 
 import com.zajel.zajelandroid.Book.AddBookModels.AddBookRequestModel;
 import com.zajel.zajelandroid.Book.AddBookModels.AddBookResponseModel;
+import com.zajel.zajelandroid.BookList.Borrow.BorrowAndCancelBookResponseBody.BorrowBookResponseBody;
+import com.zajel.zajelandroid.BookList.Borrow.BorrowBookRequestBody.BorrowBookRequestBody;
 import com.zajel.zajelandroid.Login.GoogleSignInModels.GoogleUser;
 import com.zajel.zajelandroid.Login.LogInRequestBody;
 import com.zajel.zajelandroid.PreferenceManager;
@@ -405,6 +407,83 @@ public class APIManager {
         });
     }
 
+
+
+
+
+    /**
+     *
+     *
+     * Borrow and cacel borrow
+     *
+     *
+     */
+    private BorrowBookResponse borrowBookResponse;
+
+    public void setBorrowBookResponse(BorrowBookResponse borrowBookResponse) {
+        this.borrowBookResponse = borrowBookResponse;
+    }
+    public interface BorrowBookResponse {
+        void getBorrowResponse(BorrowBookResponseBody borrowBookResponseBody);
+        void errorOccureBorrowBook();
+    }
+
+    public void borrowBook(BorrowBookRequestBody borrowBookRequestBody) {
+        networkService.getAPI().boorowBook(preferenceManager.getAccessToken(),preferenceManager.getClient()
+                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,borrowBookRequestBody).enqueue(new Callback<BorrowBookResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<BorrowBookResponseBody> call, @NonNull Response<BorrowBookResponseBody> response) {
+                if (response.body() != null && response.code() == HttpURLConnection.HTTP_OK) {
+
+                    BorrowBookResponseBody requests = response.body();
+
+                    borrowBookResponse.getBorrowResponse(requests);
+
+                } else {
+                    borrowBookResponse.errorOccureBorrowBook();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<BorrowBookResponseBody> call, @NonNull Throwable t) {
+                try {
+                    borrowBookResponse.errorOccureBorrowBook();
+                    throw new InterruptedException("Error occurred due to network problem");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
+    public void cancelBorrowBook(Integer bookId) {
+        networkService.getAPI().cancelBorrow(preferenceManager.getAccessToken(),preferenceManager.getClient()
+                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,bookId).enqueue(new Callback<BorrowBookResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<BorrowBookResponseBody> call, @NonNull Response<BorrowBookResponseBody> response) {
+                if (response.body() != null && response.code() == HttpURLConnection.HTTP_OK) {
+
+                    BorrowBookResponseBody requests = response.body();
+
+                    borrowBookResponse.getBorrowResponse(requests);
+
+                } else {
+                    borrowBookResponse.errorOccureBorrowBook();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<BorrowBookResponseBody> call, @NonNull Throwable t) {
+                try {
+                    borrowBookResponse.errorOccureBorrowBook();
+                    throw new InterruptedException("Error occurred due to network problem");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 
 }
 

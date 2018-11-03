@@ -74,6 +74,7 @@ public class BooksAdapter  extends PagedListAdapter<Book, BooksAdapter.ItemViewH
                 @Override
                 public void onClick(View v) {
                     Intent i= new Intent(mCtx,BookDetailsActivity.class);
+                    i.putExtra("bookId",item.getId());
                     i.putExtra("image",item.getImage());
                     i.putExtra("bookName",item.getTitle());
                     i.putExtra("author",item.getAuthor());

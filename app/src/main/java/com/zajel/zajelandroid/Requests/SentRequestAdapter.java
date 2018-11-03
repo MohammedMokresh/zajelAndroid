@@ -74,6 +74,7 @@ public class SentRequestAdapter extends RecyclerView.Adapter<SentRequestAdapter.
             @Override
             public void onClick(View v) {
                 Intent i= new Intent(context,BookDetailsActivity.class);
+                i.putExtra("bookId",requestsList.get(position).getBook().getId());
                 i.putExtra("image",requestsList.get(position).getBook().getImage());
                 i.putExtra("bookName",requestsList.get(position).getBook().getTitle());
                 i.putExtra("author",requestsList.get(position).getBook().getAuthor());
