@@ -1,4 +1,3 @@
-
 package com.zajel.zajelandroid.BookList.BooksModels;
 
 import com.google.gson.annotations.Expose;
@@ -39,7 +38,39 @@ public class Book {
     @SerializedName("description")
     @Expose
     private String description;
+    @SerializedName("user_id")
+    @Expose
+    private Integer userId;
+    @SerializedName("in_wishlist")
+    @Expose
+    private boolean inWishList;
+    @SerializedName("borrowed")
+    @Expose
+    private boolean borrowed;
 
+    public boolean isInWishList() {
+        return inWishList;
+    }
+
+    public void setInWishList(boolean inWishList) {
+        this.inWishList = inWishList;
+    }
+
+    public boolean isBorrowed() {
+        return borrowed;
+    }
+
+    public void setBorrowed(boolean borrowed) {
+        this.borrowed = borrowed;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public String getDescription() {
         return description;

@@ -3,6 +3,7 @@ package com.zajel.zajelandroid.BookList;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -75,6 +76,9 @@ public class BooksAdapter  extends PagedListAdapter<Book, BooksAdapter.ItemViewH
                 public void onClick(View v) {
                     Intent i= new Intent(mCtx,BookDetailsActivity.class);
                     i.putExtra("bookId",item.getId());
+                    i.putExtra("in_wishlist",item.isInWishList());
+                    i.putExtra("borrowed",item.isBorrowed());
+                    i.putExtra("user_id",item.getUserId());
                     i.putExtra("image",item.getImage());
                     i.putExtra("bookName",item.getTitle());
                     i.putExtra("author",item.getAuthor());

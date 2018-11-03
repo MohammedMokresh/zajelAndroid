@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.zajel.zajelandroid.Book.AddBookModels.AddBookRequestModel;
 import com.zajel.zajelandroid.Book.AddBookModels.AddBookResponseModel;
+import com.zajel.zajelandroid.BookList.AddToWishList.AddToWishlistRequestBody;
 import com.zajel.zajelandroid.BookList.Borrow.BorrowAndCancelBookResponseBody.BorrowBookResponseBody;
 import com.zajel.zajelandroid.BookList.Borrow.BorrowBookRequestBody.BorrowBookRequestBody;
 import com.zajel.zajelandroid.Login.GoogleSignInModels.GoogleUser;
@@ -414,7 +415,7 @@ public class APIManager {
     /**
      *
      *
-     * Borrow and cacel borrow
+     * Borrow and cancel borrow
      *
      *
      */
@@ -485,6 +486,82 @@ public class APIManager {
         });
     }
 
+
+
+
+    /**
+     *
+     *
+     * Add and remove from wishlist
+     *
+     *
+     */
+    private AddRemoveToWishList addRemoveToWishList;
+
+    public void setAddRemaoveToWishlistResponse(AddRemoveToWishList addRemoveToWishList) {
+        this.addRemoveToWishList = addRemoveToWishList;
+    }
+    public interface AddRemoveToWishList {
+        void getAddRemaoveToWishlistResponse(BorrowBookResponseBody borrowBookResponseBody);
+        void errorOccureAddRemoveToWishlist();
+    }
+
+    public void addToWishList(AddToWishlistRequestBody addToWishlistRequestBody) {
+        networkService.getAPI().addToWishList(preferenceManager.getAccessToken(),preferenceManager.getClient()
+                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,addToWishlistRequestBody).enqueue(new Callback<BorrowBookResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<BorrowBookResponseBody> call, @NonNull Response<BorrowBookResponseBody> response) {
+                if (response.body() != null && response.code() == HttpURLConnection.HTTP_OK) {
+
+                    BorrowBookResponseBody requests = response.body();
+
+                    addRemoveToWishList.getAddRemaoveToWishlistResponse(requests);
+
+                } else {
+                    addRemoveToWishList.errorOccureAddRemoveToWishlist();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<BorrowBookResponseBody> call, @NonNull Throwable t) {
+                try {
+                    addRemoveToWishList.errorOccureAddRemoveToWishlist();
+                    throw new InterruptedException("Error occurred due to network problem");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
+    public void deleteFromWishList(Integer bookId) {
+        networkService.getAPI().deleteFromWishList(preferenceManager.getAccessToken(),preferenceManager.getClient()
+                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,bookId).enqueue(new Callback<BorrowBookResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<BorrowBookResponseBody> call, @NonNull Response<BorrowBookResponseBody> response) {
+                if (response.body() != null && response.code() == HttpURLConnection.HTTP_OK) {
+
+                    BorrowBookResponseBody requests = response.body();
+
+                    addRemoveToWishList.getAddRemaoveToWishlistResponse(requests);
+
+                } else {
+                    addRemoveToWishList.errorOccureAddRemoveToWishlist();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<BorrowBookResponseBody> call, @NonNull Throwable t) {
+                try {
+                    addRemoveToWishList.errorOccureAddRemoveToWishlist();
+                    throw new InterruptedException("Error occurred due to network problem");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
 }
 
 

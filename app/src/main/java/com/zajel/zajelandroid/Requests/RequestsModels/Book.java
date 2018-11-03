@@ -15,12 +15,6 @@ public class Book {
     @SerializedName("author")
     @Expose
     private String author;
-    @SerializedName("description")
-    @Expose
-    private String description;
-    @SerializedName("genre")
-    @Expose
-    private String genre;
     @SerializedName("publishing_year")
     @Expose
     private String publishingYear;
@@ -39,41 +33,52 @@ public class Book {
     @SerializedName("approved")
     @Expose
     private Boolean approved;
+    @SerializedName("genre")
+    @Expose
+    private String genre;
+    @SerializedName("description")
+    @Expose
+    private String description;
+    @SerializedName("user_id")
+    @Expose
+    private Integer userId;
+    @SerializedName("in_wishlist")
+    @Expose
+    private boolean inWishList;
+    @SerializedName("borrowed")
+    @Expose
+    private boolean borrowed;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public Book() {
+    public boolean isInWishList() {
+        return inWishList;
     }
 
-    /**
-     * 
-     * @param genre
-     * @param id
-     * @param author
-     * @param approved
-     * @param title
-     * @param status
-     * @param description
-     * @param image
-     * @param pageNumber
-     * @param publishingYear
-     * @param language
-     */
-    public Book(Integer id, String title, String author, String description, String genre, String publishingYear, String language, Integer pageNumber, String image, String status, Boolean approved) {
-        super();
-        this.id = id;
-        this.title = title;
-        this.author = author;
+    public void setInWishList(boolean inWishList) {
+        this.inWishList = inWishList;
+    }
+
+    public boolean isBorrowed() {
+        return borrowed;
+    }
+
+    public void setBorrowed(boolean borrowed) {
+        this.borrowed = borrowed;
+    }
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
         this.description = description;
-        this.genre = genre;
-        this.publishingYear = publishingYear;
-        this.language = language;
-        this.pageNumber = pageNumber;
-        this.image = image;
-        this.status = status;
-        this.approved = approved;
     }
 
     public Integer getId() {
@@ -98,22 +103,6 @@ public class Book {
 
     public void setAuthor(String author) {
         this.author = author;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getGenre() {
-        return genre;
-    }
-
-    public void setGenre(String genre) {
-        this.genre = genre;
     }
 
     public String getPublishingYear() {
@@ -162,6 +151,14 @@ public class Book {
 
     public void setApproved(Boolean approved) {
         this.approved = approved;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
 }

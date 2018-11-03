@@ -2,6 +2,7 @@ package com.zajel.zajelandroid.APIManager;
 
 import com.zajel.zajelandroid.Book.AddBookModels.AddBookRequestModel;
 import com.zajel.zajelandroid.Book.AddBookModels.AddBookResponseModel;
+import com.zajel.zajelandroid.BookList.AddToWishList.AddToWishlistRequestBody;
 import com.zajel.zajelandroid.BookList.Borrow.BorrowAndCancelBookResponseBody.BorrowBookResponseBody;
 import com.zajel.zajelandroid.BookList.Borrow.BorrowBookRequestBody.BorrowBookRequestBody;
 import com.zajel.zajelandroid.BuildConfig;
@@ -21,6 +22,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -108,15 +110,26 @@ public class NetworkService {
 
 
             /////
-        @GET(TABLE_BOOK_ACTIVITIES)
+        @POST(TABLE_BOOK_ACTIVITIES)
         Call<BorrowBookResponseBody> boorowBook(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
                 String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Body BorrowBookRequestBody borrowBookRequestBody);
 
 
-        @GET(TABLE_BOOK_ACTIVITIES+"/{id}")
+        @DELETE(TABLE_BOOK_ACTIVITIES+"/{id}")
         Call<BorrowBookResponseBody> cancelBorrow(@Header("Access-Token") String accessToken, @Header("Client") String client ,@Header("Expiry")
-                String expiry ,@Header("Uid") String uid,@Header("Token-Type") String tokenType,@Header("Content-Type") String contentType, @Header("Accept") String accept,@Query("id") Integer bookId);
+                String expiry ,@Header("Uid") String uid,@Header("Token-Type") String tokenType,@Header("Content-Type") String contentType, @Header("Accept") String accept,@Path("id") Integer bookId);
 
+
+
+
+        @POST(TABLE_WISHLIST)
+        Call<BorrowBookResponseBody> addToWishList(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
+                String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Body AddToWishlistRequestBody addToWishlistRequestBody);
+
+
+        @DELETE(TABLE_WISHLIST+"/{id}")
+        Call<BorrowBookResponseBody> deleteFromWishList(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
+                String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Path("id") Integer bookId);
 
     }
 

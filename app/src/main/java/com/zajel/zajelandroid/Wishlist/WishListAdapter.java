@@ -59,6 +59,9 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
             public void onClick(View v) {
 
                 Intent i= new Intent(context,BookDetailsActivity.class);
+                i.putExtra("in_wishlist",whishlist.get(position).getBook().isInWishList());
+                i.putExtra("borrowed",whishlist.get(position).getBook().isInWishList());
+                i.putExtra("user_id",whishlist.get(position).getBook().getUserId());
                 i.putExtra("bookId",whishlist.get(position).getBook().getId());
                 i.putExtra("image",whishlist.get(position).getBook().getImage());
                 i.putExtra("bookName",whishlist.get(position).getBook().getTitle());
