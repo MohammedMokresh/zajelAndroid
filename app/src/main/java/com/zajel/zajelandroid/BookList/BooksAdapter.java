@@ -3,13 +3,11 @@ package com.zajel.zajelandroid.BookList;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.zajel.zajelandroid.BookList.BooksModels.Book;
@@ -21,8 +19,20 @@ import androidx.paging.PagedListAdapter;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class BooksAdapter  extends PagedListAdapter<Book, BooksAdapter.ItemViewHolder> {
+public class BooksAdapter extends PagedListAdapter<Book, BooksAdapter.ItemViewHolder> {
 
+    private static DiffUtil.ItemCallback<Book> DIFF_CALLBACK =
+            new DiffUtil.ItemCallback<Book>() {
+                @Override
+                public boolean areItemsTheSame(Book oldItem, Book newItem) {
+                    return oldItem.getId().equals(newItem.getId());
+                }
+
+                @Override
+                public boolean areContentsTheSame(Book oldItem, Book newItem) {
+                    return oldItem.equals(newItem);
+                }
+            };
     private Context mCtx;
 
     BooksAdapter(Context mCtx) {
@@ -65,7 +75,7 @@ public class BooksAdapter  extends PagedListAdapter<Book, BooksAdapter.ItemViewH
             }
 
             holder.searchItemCardView.setLayoutParams(rlp);
-            Picasso.with(mCtx)
+            Picasso.get()
                     .load(item.getImage())
                     .fit()
                     .into(holder.dynamicHeightImageView);
@@ -74,20 +84,20 @@ public class BooksAdapter  extends PagedListAdapter<Book, BooksAdapter.ItemViewH
             holder.searchItemCardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i= new Intent(mCtx,BookDetailsActivity.class);
-                    i.putExtra("bookId",item.getId());
-                    i.putExtra("in_wishlist",item.isInWishList());
-                    i.putExtra("borrowed",item.isBorrowed());
-                    i.putExtra("user_id",item.getUserId());
-                    i.putExtra("image",item.getImage());
-                    i.putExtra("bookName",item.getTitle());
-                    i.putExtra("author",item.getAuthor());
-                    i.putExtra("pageCount",item.getPageNumber().toString());
-                    i.putExtra("language",item.getLanguage());
-                    i.putExtra("publishingYear",item.getPublishingYear());
-                    i.putExtra("genre",item.getGenre());
-                    i.putExtra("status",item.getStatus());
-                    i.putExtra("description",item.getDescription());
+                    Intent i = new Intent(mCtx, BookDetailsActivity.class);
+                    i.putExtra("bookId", item.getId());
+                    i.putExtra("in_wishlist", item.isInWishList());
+                    i.putExtra("borrowed", item.isBorrowed());
+                    i.putExtra("user_id", item.getUserId());
+                    i.putExtra("image", item.getImage());
+                    i.putExtra("bookName", item.getTitle());
+                    i.putExtra("author", item.getAuthor());
+                    i.putExtra("pageCount", item.getPageNumber().toString());
+                    i.putExtra("language", item.getLanguage());
+                    i.putExtra("publishingYear", item.getPublishingYear());
+                    i.putExtra("genre", item.getGenre());
+                    i.putExtra("status", item.getStatus());
+                    i.putExtra("description", item.getDescription());
 
                     mCtx.startActivity(i);
                 }
@@ -96,23 +106,11 @@ public class BooksAdapter  extends PagedListAdapter<Book, BooksAdapter.ItemViewH
         }
     }
 
-    private static DiffUtil.ItemCallback<Book> DIFF_CALLBACK =
-            new DiffUtil.ItemCallback<Book>() {
-                @Override
-                public boolean areItemsTheSame(Book oldItem, Book newItem) {
-                    return oldItem.getId().equals(newItem.getId());
-                }
-
-                @Override
-                public boolean areContentsTheSame(Book oldItem, Book newItem) {
-                    return oldItem.equals(newItem);
-                }
-            };
-
     class ItemViewHolder extends RecyclerView.ViewHolder {
 
         CardView searchItemCardView;
         ImageView dynamicHeightImageView;
+
         public ItemViewHolder(View itemView) {
             super(itemView);
             searchItemCardView = itemView.findViewById(R.id.search_item_card);

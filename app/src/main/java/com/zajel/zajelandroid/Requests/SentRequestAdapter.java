@@ -68,7 +68,7 @@ public class SentRequestAdapter extends RecyclerView.Adapter<SentRequestAdapter.
     public void onBindViewHolder(final SentRequestAdapter.SentRequestAdapterHolder holder, final int position) {
             holder.bookNameTextView.setText(requestsList.get(position).getBook().getTitle());
             holder.authorTextView.setText(requestsList.get(position).getBook().getAuthor());
-        Picasso.with(context).load(requestsList.get(position).getBook().getImage()).into(holder.bookImageView);
+        Picasso.get().load(requestsList.get(position).getBook().getImage()).into(holder.bookImageView);
 
         holder.sentRequestRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override

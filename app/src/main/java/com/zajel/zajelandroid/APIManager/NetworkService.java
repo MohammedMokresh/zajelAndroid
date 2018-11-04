@@ -129,7 +129,7 @@ public class NetworkService {
 
         @DELETE(TABLE_WISHLIST+"/{id}")
         Call<BorrowBookResponseBody> deleteFromWishList(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
-                String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Path("id") Integer bookId);
+                String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept,@Path("id") Integer Id, @Query("book_id") Integer bookId);
 
     }
 

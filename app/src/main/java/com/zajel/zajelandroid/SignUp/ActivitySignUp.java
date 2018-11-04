@@ -194,7 +194,7 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
                 @Override
                 public void onSuccess(String requestId, Map resultData) {
                     imageURL = getUrlForMaxWidth(resultData.get("public_id").toString());
-                    Picasso.with(ActivitySignUp.this).load(getUrlForMaxWidth(resultData.get("public_id").toString())).into(userImageView);
+                    Picasso.get().load(getUrlForMaxWidth(resultData.get("public_id").toString())).into(userImageView);
                     showSnackBar("Upload complete!");
                 }
 

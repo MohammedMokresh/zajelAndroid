@@ -275,7 +275,7 @@ public class AddUpdateBookActivity extends AppCompatActivity implements View.OnC
                 @Override
                 public void onSuccess(String requestId, Map resultData) {
                     imageURL=getUrlForMaxWidth(resultData.get("public_id").toString());
-                    Picasso.with(AddUpdateBookActivity.this).load(getUrlForMaxWidth(resultData.get("public_id").toString())).into(bookImageView);
+                    Picasso.get().load(getUrlForMaxWidth(resultData.get("public_id").toString())).into(bookImageView);
                     showSnackBar("Upload complete!");
                 }
 

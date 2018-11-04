@@ -49,7 +49,7 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.WishLi
 
         holder.bookNameTextView.setText(whishlist.get(position).getBook().getTitle());
         holder.bookOwnerTextView.setText(whishlist.get(position).getBook().getAuthor());
-        Picasso.with(context).load(whishlist.get(position).getBook().getImage()).into(holder.bookImageView);
+        Picasso.get().load(whishlist.get(position).getBook().getImage()).into(holder.bookImageView);
 
         createStatusChip(holder.statusChip,position);
 

@@ -537,7 +537,7 @@ public class APIManager {
 
     public void deleteFromWishList(Integer bookId) {
         networkService.getAPI().deleteFromWishList(preferenceManager.getAccessToken(),preferenceManager.getClient()
-                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,bookId).enqueue(new Callback<BorrowBookResponseBody>() {
+                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,bookId,bookId).enqueue(new Callback<BorrowBookResponseBody>() {
             @Override
             public void onResponse(@NonNull Call<BorrowBookResponseBody> call, @NonNull Response<BorrowBookResponseBody> response) {
                 if (response.body() != null && response.code() == HttpURLConnection.HTTP_OK) {

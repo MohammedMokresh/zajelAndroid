@@ -15,7 +15,10 @@ import com.facebook.imagepipeline.postprocessors.IterativeBoxBlurPostProcessor;
 import com.facebook.imagepipeline.request.ImageRequest;
 import com.facebook.imagepipeline.request.ImageRequestBuilder;
 import com.facebook.imagepipeline.request.Postprocessor;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.zajel.zajelandroid.APIManager.APIManager;
 import com.zajel.zajelandroid.BookList.AddToWishList.AddToWishlistRequestBody;
 import com.zajel.zajelandroid.BookList.AddToWishList.Wishlist;
@@ -75,7 +78,14 @@ public class BookDetailsActivity extends AppCompatActivity implements APIManager
         apiManager = new APIManager(getApplicationContext());
         apiManager.setBorrowBookResponse(this);
         apiManager.setAddRemaoveToWishlistResponse(this);
+FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( BookDetailsActivity.this,  new OnSuccessListener<InstanceIdResult>() {
+        @Override
+        public void onSuccess(InstanceIdResult instanceIdResult) {
+            String newToken = instanceIdResult.getToken();
+            Log.e("newToken",newToken);
 
+        }
+    });
 
         // the image blured
         Postprocessor postprocessor = new IterativeBoxBlurPostProcessor(50);

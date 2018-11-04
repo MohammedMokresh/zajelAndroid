@@ -37,7 +37,7 @@ public class ReceiveRequestsAdapter extends RecyclerView.Adapter<ReceiveRequests
     public void onBindViewHolder(final ReceiveRequestsAdapter.SentRequestAdapterHolder holder, final int position) {
         holder.bookNameTextView.setText(bookActivityList.get(position).getBook().getTitle());
         holder.userNameTextView.setText(bookActivityList.get(position).getBorrower().getFirstName() + " " + bookActivityList.get(position).getBorrower().getLastName());
-        Picasso.with(context).load(bookActivityList.get(position).getBorrower().getImage()).into(holder.userImageView);
+        Picasso.get().load(bookActivityList.get(position).getBorrower().getImage()).into(holder.userImageView);
 
 
     }
