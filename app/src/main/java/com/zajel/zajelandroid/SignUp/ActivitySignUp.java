@@ -17,7 +17,10 @@ import com.cloudinary.Transformation;
 import com.cloudinary.android.MediaManager;
 import com.cloudinary.android.callback.ErrorInfo;
 import com.cloudinary.android.callback.UploadCallback;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.squareup.picasso.Picasso;
 import com.zajel.zajelandroid.APIManager.APIManager;
 import com.zajel.zajelandroid.Dialogs.DialogUtil;
@@ -27,6 +30,7 @@ import com.zajel.zajelandroid.PreferenceManager;
 import com.zajel.zajelandroid.R;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRequestBody;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRespnseBody;
+import com.zajel.zajelandroid.User.UpdateFirebaseTokenRequestBody;
 import com.zajel.zajelandroid.Utils.ZajelUtils;
 
 import java.text.SimpleDateFormat;
@@ -261,6 +265,21 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
     @Override
     public void getSignUpResponse(SignUpRespnseBody signUpRespnseBody) {
         DialogUtil.removeProgressDialog();
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( ActivitySignUp.this,  new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String newToken = instanceIdResult.getToken();
+                try {
+                    if (!signUpRespnseBody.getData().getFcmToken().equals(newToken) || signUpRespnseBody.getData().getFcmToken() == null) {
+                        apiManager.updateFireBaseToken(signUpRespnseBody.getData().getId(), new UpdateFirebaseTokenRequestBody(new com.zajel.zajelandroid.User.User(newToken)));
+                    }
+                } catch (Exception e) {
+                    apiManager.updateFireBaseToken(signUpRespnseBody.getData().getId(), new UpdateFirebaseTokenRequestBody(new com.zajel.zajelandroid.User.User(newToken)));
+
+                }
+
+            }
+        });
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
         finish();

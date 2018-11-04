@@ -1,11 +1,9 @@
-
 package com.zajel.zajelandroid.SignUp.Models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Data {
-
     @SerializedName("uid")
     @Expose
     private String uid;
@@ -18,9 +16,6 @@ public class Data {
     @SerializedName("provider")
     @Expose
     private String provider;
-    @SerializedName("allow_password_change")
-    @Expose
-    private Boolean allowPasswordChange;
     @SerializedName("first_name")
     @Expose
     private String firstName;
@@ -54,6 +49,28 @@ public class Data {
     @SerializedName("updated_at")
     @Expose
     private String updatedAt;
+    @SerializedName("phone_number")
+    @Expose
+    private String phoneNumber;
+    @SerializedName("state")
+    @Expose
+    private String state;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public String getUid() {
         return uid;
@@ -85,14 +102,6 @@ public class Data {
 
     public void setProvider(String provider) {
         this.provider = provider;
-    }
-
-    public Boolean getAllowPasswordChange() {
-        return allowPasswordChange;
-    }
-
-    public void setAllowPasswordChange(Boolean allowPasswordChange) {
-        this.allowPasswordChange = allowPasswordChange;
     }
 
     public String getFirstName() {

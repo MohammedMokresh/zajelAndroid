@@ -78,14 +78,6 @@ public class BookDetailsActivity extends AppCompatActivity implements APIManager
         apiManager = new APIManager(getApplicationContext());
         apiManager.setBorrowBookResponse(this);
         apiManager.setAddRemaoveToWishlistResponse(this);
-FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener( BookDetailsActivity.this,  new OnSuccessListener<InstanceIdResult>() {
-        @Override
-        public void onSuccess(InstanceIdResult instanceIdResult) {
-            String newToken = instanceIdResult.getToken();
-            Log.e("newToken",newToken);
-
-        }
-    });
 
         // the image blured
         Postprocessor postprocessor = new IterativeBoxBlurPostProcessor(50);

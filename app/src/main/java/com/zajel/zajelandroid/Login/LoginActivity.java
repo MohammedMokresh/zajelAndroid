@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
@@ -21,6 +22,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.zajel.zajelandroid.APIManager.APIManager;
 import com.zajel.zajelandroid.Dialogs.DialogUtil;
 import com.zajel.zajelandroid.Login.GoogleSignInModels.GoogleUser;
@@ -30,6 +33,7 @@ import com.zajel.zajelandroid.PreferenceManager;
 import com.zajel.zajelandroid.R;
 import com.zajel.zajelandroid.SignUp.ActivitySignUp;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRespnseBody;
+import com.zajel.zajelandroid.User.UpdateFirebaseTokenRequestBody;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -169,6 +173,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void getLoginResponse(SignUpRespnseBody signUpRespnseBody) {
 
         DialogUtil.removeProgressDialog();
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(LoginActivity.this, new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String newToken = instanceIdResult.getToken();
+                try {
+                    if (!signUpRespnseBody.getData().getFcmToken().equals(newToken) || signUpRespnseBody.getData().getFcmToken() == null) {
+                        apiManager.updateFireBaseToken(signUpRespnseBody.getData().getId(), new UpdateFirebaseTokenRequestBody(new com.zajel.zajelandroid.User.User(newToken)));
+                    }
+                } catch (Exception e) {
+                    apiManager.updateFireBaseToken(signUpRespnseBody.getData().getId(), new UpdateFirebaseTokenRequestBody(new com.zajel.zajelandroid.User.User(newToken)));
+
+                }
+
+            }
+        });
+
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
         finish();
@@ -233,6 +254,22 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void getGoogleLoginResponse(SignUpRespnseBody jsonElement) {
         DialogUtil.removeProgressDialog();
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(LoginActivity.this, new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String newToken = instanceIdResult.getToken();
+                try {
+                    if (!jsonElement.getData().getFcmToken().equals(newToken) || jsonElement.getData().getFcmToken() == null) {
+                        apiManager.updateFireBaseToken(jsonElement.getData().getId(), new UpdateFirebaseTokenRequestBody(new com.zajel.zajelandroid.User.User(newToken)));
+                    }
+                } catch (Exception e) {
+                    apiManager.updateFireBaseToken(jsonElement.getData().getId(), new UpdateFirebaseTokenRequestBody(new com.zajel.zajelandroid.User.User(newToken)));
+
+                }
+
+            }
+        });
+
         Intent i = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(i);
         finish();

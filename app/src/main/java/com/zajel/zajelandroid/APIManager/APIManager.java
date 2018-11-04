@@ -4,6 +4,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import android.util.Log;
 
+import com.google.gson.JsonElement;
 import com.zajel.zajelandroid.Book.AddBookModels.AddBookRequestModel;
 import com.zajel.zajelandroid.Book.AddBookModels.AddBookResponseModel;
 import com.zajel.zajelandroid.BookList.AddToWishList.AddToWishlistRequestBody;
@@ -15,6 +16,7 @@ import com.zajel.zajelandroid.PreferenceManager;
 import com.zajel.zajelandroid.Requests.RequestsModels.Requests;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRequestBody;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRespnseBody;
+import com.zajel.zajelandroid.User.UpdateFirebaseTokenRequestBody;
 import com.zajel.zajelandroid.Wishlist.WishlistModels.WishListResponseBody;
 
 import java.net.HttpURLConnection;
@@ -562,6 +564,42 @@ public class APIManager {
             }
         });
     }
+
+
+
+    /**
+     *
+     *
+     * UpdateFireBaseToken
+     *
+     *
+     */
+
+    public void updateFireBaseToken(Integer userId,UpdateFirebaseTokenRequestBody updateFirebaseTokenRequestBody) {
+        networkService.getAPI().updateFireBaseToken(preferenceManager.getAccessToken(),preferenceManager.getClient()
+                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,userId,updateFirebaseTokenRequestBody).enqueue(new Callback<JsonElement>() {
+            @Override
+            public void onResponse(@NonNull Call<JsonElement> call, @NonNull Response<JsonElement> response) {
+                if (response.body() != null && response.code() == HttpURLConnection.HTTP_OK) {
+
+                } else {
+
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<JsonElement> call, @NonNull Throwable t) {
+                try {
+
+                    throw new InterruptedException("Error occurred due to network problem");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
 }
 
 

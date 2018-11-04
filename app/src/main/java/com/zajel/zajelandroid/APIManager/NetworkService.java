@@ -1,5 +1,6 @@
 package com.zajel.zajelandroid.APIManager;
 
+import com.google.gson.JsonElement;
 import com.zajel.zajelandroid.Book.AddBookModels.AddBookRequestModel;
 import com.zajel.zajelandroid.Book.AddBookModels.AddBookResponseModel;
 import com.zajel.zajelandroid.BookList.AddToWishList.AddToWishlistRequestBody;
@@ -12,6 +13,7 @@ import com.zajel.zajelandroid.Login.LogInRequestBody;
 import com.zajel.zajelandroid.Requests.RequestsModels.Requests;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRequestBody;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRespnseBody;
+import com.zajel.zajelandroid.User.UpdateFirebaseTokenRequestBody;
 import com.zajel.zajelandroid.Wishlist.WishlistModels.WishListResponseBody;
 
 import java.util.concurrent.TimeUnit;
@@ -42,6 +44,7 @@ public class NetworkService {
     private final static String TABLE_GOOGLE_LOG_IN = "users/google_sign_in";
     private final static String TABLE_BOOK_ACTIVITIES = "book_activities";
     private final static String TABLE_WISHLIST = "wishlists";
+    private final static String TABLE_USERS = "users";
 
     public  ZajelNetworkAPI getAPI() {
 
@@ -130,6 +133,12 @@ public class NetworkService {
         @DELETE(TABLE_WISHLIST+"/{id}")
         Call<BorrowBookResponseBody> deleteFromWishList(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
                 String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept,@Path("id") Integer Id, @Query("book_id") Integer bookId);
+
+
+        @PUT(TABLE_USERS+"/{user_id}")
+        Call<JsonElement> updateFireBaseToken(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
+                String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Path("user_id") Integer Id, @Body UpdateFirebaseTokenRequestBody updateFirebaseTokenRequestBody);
+
 
     }
 
