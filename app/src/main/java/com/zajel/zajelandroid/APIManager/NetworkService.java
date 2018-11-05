@@ -10,10 +10,10 @@ import com.zajel.zajelandroid.BuildConfig;
 import com.zajel.zajelandroid.BookList.BooksModels.Books;
 import com.zajel.zajelandroid.Login.GoogleSignInModels.GoogleUser;
 import com.zajel.zajelandroid.Login.LogInRequestBody;
+import com.zajel.zajelandroid.Profile.User.UpdateFirebaseTokenRequestBody;
 import com.zajel.zajelandroid.Requests.RequestsModels.Requests;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRequestBody;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRespnseBody;
-import com.zajel.zajelandroid.User.UpdateFirebaseTokenRequestBody;
 import com.zajel.zajelandroid.Wishlist.WishlistModels.WishListResponseBody;
 
 import java.util.concurrent.TimeUnit;

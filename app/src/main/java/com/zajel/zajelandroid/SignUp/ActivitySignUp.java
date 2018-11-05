@@ -30,7 +30,7 @@ import com.zajel.zajelandroid.PreferenceManager;
 import com.zajel.zajelandroid.R;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRequestBody;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRespnseBody;
-import com.zajel.zajelandroid.User.UpdateFirebaseTokenRequestBody;
+import com.zajel.zajelandroid.Profile.User.UpdateFirebaseTokenRequestBody;
 import com.zajel.zajelandroid.Utils.ZajelUtils;
 
 import java.text.SimpleDateFormat;
@@ -271,10 +271,10 @@ public class ActivitySignUp extends AppCompatActivity implements View.OnClickLis
                 String newToken = instanceIdResult.getToken();
                 try {
                     if (!signUpRespnseBody.getData().getFcmToken().equals(newToken) || signUpRespnseBody.getData().getFcmToken() == null) {
-                        apiManager.updateFireBaseToken(signUpRespnseBody.getData().getId(), new UpdateFirebaseTokenRequestBody(new com.zajel.zajelandroid.User.User(newToken)));
+                        apiManager.updateFireBaseToken(signUpRespnseBody.getData().getId(), new UpdateFirebaseTokenRequestBody(new com.zajel.zajelandroid.Profile.User.User(newToken)));
                     }
                 } catch (Exception e) {
-                    apiManager.updateFireBaseToken(signUpRespnseBody.getData().getId(), new UpdateFirebaseTokenRequestBody(new com.zajel.zajelandroid.User.User(newToken)));
+                    apiManager.updateFireBaseToken(signUpRespnseBody.getData().getId(), new UpdateFirebaseTokenRequestBody(new com.zajel.zajelandroid.Profile.User.User(newToken)));
 
                 }
 

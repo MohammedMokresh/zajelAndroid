@@ -1,5 +1,5 @@
 
-package com.zajel.zajelandroid.User;
+package com.zajel.zajelandroid.Profile.User;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

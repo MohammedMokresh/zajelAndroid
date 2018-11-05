@@ -16,7 +16,7 @@ import com.zajel.zajelandroid.PreferenceManager;
 import com.zajel.zajelandroid.Requests.RequestsModels.Requests;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRequestBody;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRespnseBody;
-import com.zajel.zajelandroid.User.UpdateFirebaseTokenRequestBody;
+import com.zajel.zajelandroid.Profile.User.UpdateFirebaseTokenRequestBody;
 import com.zajel.zajelandroid.Wishlist.WishlistModels.WishListResponseBody;
 
 import java.net.HttpURLConnection;
