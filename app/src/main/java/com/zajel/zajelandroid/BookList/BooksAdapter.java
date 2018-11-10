@@ -55,7 +55,7 @@ public class BooksAdapter extends PagedListAdapter<Book, BooksAdapter.ItemViewHo
             ViewGroup.LayoutParams rlp = holder.searchItemCardView.getLayoutParams();
             rlp.width = ViewGroup.LayoutParams.MATCH_PARENT;
             if (position == 1) {
-                holder.setIsRecyclable(false);
+                holder.setIsRecyclable(true);
                 Resources r = mCtx.getResources();
                 int px = (int) TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP,

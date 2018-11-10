@@ -196,6 +196,7 @@
     <string name="publish_year_empty">Publish year should not be empty</string>
     <string name="page_count_empty">Page count should not be empty</string>
     <string name="description_empty">Description should not be empty</string>
+    <string name="categories">Categories</string>
 
 
 </resources>

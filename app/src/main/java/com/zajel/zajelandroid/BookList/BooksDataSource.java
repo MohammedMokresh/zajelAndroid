@@ -1,6 +1,8 @@
 package com.zajel.zajelandroid.BookList;
 
 
+import android.util.Log;
+
 import com.zajel.zajelandroid.APIManager.NetworkService;
 import com.zajel.zajelandroid.BookList.BooksModels.Book;
 import com.zajel.zajelandroid.BookList.BooksModels.Books;
@@ -23,9 +25,11 @@ public class BooksDataSource extends PageKeyedDataSource<Integer, Book> {
     private final NetworkService networkService;
     PreferenceManager preferenceManager;
 
-    public BooksDataSource() {
+    String genre;
+    public BooksDataSource(String genre) {
         networkService = new NetworkService();
         preferenceManager=  PreferenceManager.getInstance();
+        this.genre= genre;
     }
 
     //this will be called once to load the initial data
@@ -33,7 +37,7 @@ public class BooksDataSource extends PageKeyedDataSource<Integer, Book> {
     public void loadInitial(@NonNull LoadInitialParams<Integer> params, @NonNull final LoadInitialCallback<Integer, Book> callback) {
         networkService
                 .getAPI().getBooks(preferenceManager.getAccessToken(),preferenceManager.getClient()
-                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(), NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,FIRST_PAGE)
+                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(), NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,FIRST_PAGE,genre)
                 .enqueue(new Callback<Books>() {
                     @Override
                     public void onResponse(Call<Books> call, Response<Books> response) {
@@ -54,7 +58,7 @@ public class BooksDataSource extends PageKeyedDataSource<Integer, Book> {
     public void loadBefore(@NonNull final LoadParams<Integer> params, @NonNull final LoadCallback<Integer, Book> callback) {
       networkService
                 .getAPI().getBooks(preferenceManager.getAccessToken(),preferenceManager.getClient()
-              ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,params.key)
+              ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,params.key,genre)
                 .enqueue(new Callback<Books>() {
                     @Override
                     public void onResponse(Call<Books> call, Response<Books> response) {
@@ -84,7 +88,7 @@ public class BooksDataSource extends PageKeyedDataSource<Integer, Book> {
         networkService
                 .getAPI()
                 .getBooks(preferenceManager.getAccessToken(),preferenceManager.getClient()
-                        ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,params.key)
+                        ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,params.key,genre)
                 .enqueue(new Callback<Books>() {
                     @Override
                     public void onResponse(Call<Books> call, Response<Books> response) {

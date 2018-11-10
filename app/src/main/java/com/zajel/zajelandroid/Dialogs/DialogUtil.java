@@ -1,5 +1,9 @@
 package com.zajel.zajelandroid.Dialogs;
 
+import android.os.Bundle;
+
+import java.util.ArrayList;
+
 import androidx.fragment.app.FragmentManager;
 
 
@@ -35,6 +39,20 @@ public class DialogUtil {
 
         } catch (Exception e) {
         }
+    }
+    public static void showChooseCategory(FragmentManager fragmentManager, ArrayList<String> data, ArrayList<String> id) {
+        if (fragmentManager == null) return;
+
+        try {
+            BooksCategoryBottomSheetFragment fragment = new BooksCategoryBottomSheetFragment();
+            Bundle args = new Bundle();
+            args.putStringArrayList("dataFromInstance", data);
+            args.putStringArrayList("dataFromId", id);
+            fragment.setArguments(args);
+            fragment.show(fragmentManager, "show_categories_bootomSheet");
+        } catch (Exception ignore) {
+        }
+
     }
 
 

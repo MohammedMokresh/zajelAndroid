@@ -10,6 +10,7 @@ import com.zajel.zajelandroid.Book.AddBookModels.AddBookResponseModel;
 import com.zajel.zajelandroid.BookList.AddToWishList.AddToWishlistRequestBody;
 import com.zajel.zajelandroid.BookList.Borrow.BorrowAndCancelBookResponseBody.BorrowBookResponseBody;
 import com.zajel.zajelandroid.BookList.Borrow.BorrowBookRequestBody.BorrowBookRequestBody;
+import com.zajel.zajelandroid.BookList.GenresModels.GenresList;
 import com.zajel.zajelandroid.Login.GoogleSignInModels.GoogleUser;
 import com.zajel.zajelandroid.Login.LogInRequestBody;
 import com.zajel.zajelandroid.PreferenceManager;
@@ -598,6 +599,58 @@ public class APIManager {
             }
         });
     }
+
+
+
+
+
+
+    /**
+     *
+     *
+     * GENRESLIST
+     *
+     *
+     */
+    private GenreListResponse genreListResponse;
+
+    public void setGenreListResponse(GenreListResponse genreListResponse) {
+        this.genreListResponse = genreListResponse;
+    }
+    public interface GenreListResponse {
+        void getGeneres(GenresList genresList);
+        void errorOccureGenre();
+    }
+
+    public void getGenreSList() {
+        networkService.getAPI().getGenreList(preferenceManager.getAccessToken(),preferenceManager.getClient()
+                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT).enqueue(new Callback<GenresList>() {
+            @Override
+            public void onResponse(@NonNull Call<GenresList> call, @NonNull Response<GenresList> response) {
+                if (response.body() != null && response.code() == HttpURLConnection.HTTP_OK) {
+
+                    GenresList requests = response.body();
+
+                    genreListResponse.getGeneres(requests);
+
+                } else {
+                    genreListResponse.errorOccureGenre();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<GenresList> call, @NonNull Throwable t) {
+                try {
+                    genreListResponse.errorOccureGenre();
+                    throw new InterruptedException("Error occurred due to network problem");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
 
 
 }

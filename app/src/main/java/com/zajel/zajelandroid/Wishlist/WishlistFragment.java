@@ -77,7 +77,7 @@ public class WishlistFragment extends Fragment  implements APIManager.WishlistRe
 
     @Override
     public void getWishlist(WishListResponseBody wishListResponseBody) {
-
+        wishlistList= new ArrayList<>();
         if (wishListResponseBody.getWishlists().size()!=0){
             for (int i = 0; i <wishListResponseBody.getWishlists().size();i++){
                 wishlistList.add(wishListResponseBody.getWishlists().get(i));

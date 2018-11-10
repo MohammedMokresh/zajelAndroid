@@ -11,6 +11,8 @@ public class PreferenceManager {
     private static final String EXPIRY = "expiry";
     private static final String UID = "uid";
     private static final String TOKEN_TYPE = "token_type";
+    private static final String CHOOSEN_CATEGORY = "choosen_category";
+
 
     private static PreferenceManager sInstance;
     private final SharedPreferences mPref;
@@ -74,6 +76,12 @@ public class PreferenceManager {
         return mPref.getString(TOKEN_TYPE, "");
     }
 
+    public void setChoosenCategory(String  value ) {
+        mPref.edit().putString(CHOOSEN_CATEGORY, value).apply();
+    }
+    public String getChoosenCategory() {
+        return mPref.getString(CHOOSEN_CATEGORY, "");
+    }
 
 
     public boolean clear() {

@@ -1,5 +1,7 @@
 package com.zajel.zajelandroid.BookList;
 
+import android.util.Log;
+
 import com.zajel.zajelandroid.BookList.BooksModels.Book;
 
 import androidx.lifecycle.LiveData;
@@ -15,9 +17,20 @@ public class BooksViewModel extends ViewModel {
     LiveData<PageKeyedDataSource<Integer, Book>> liveDataSource;
 
     //constructor
-    public BooksViewModel() {
+
+    String genre;
+
+    public BooksViewModel(String genre) {
+        this.genre = genre;
+        initTheViewModel(genre);
+
+    }
+
+    public void initTheViewModel(String genre) {
         //getting our data source factory
-        BooksDataSourceFactory itemDataSourceFactory = new BooksDataSourceFactory();
+        BooksDataSourceFactory itemDataSourceFactory = new BooksDataSourceFactory(genre);
+
+//        itemDataSourceFactory.create();
 
         //getting the live data source from data source factory
         liveDataSource = itemDataSourceFactory.getItemLiveDataSource();
@@ -32,4 +45,7 @@ public class BooksViewModel extends ViewModel {
         itemPagedList = (new LivePagedListBuilder(itemDataSourceFactory, pagedListConfig))
                 .build();
     }
+
+
+
 }

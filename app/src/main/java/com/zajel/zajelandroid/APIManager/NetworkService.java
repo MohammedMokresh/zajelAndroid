@@ -6,6 +6,7 @@ import com.zajel.zajelandroid.Book.AddBookModels.AddBookResponseModel;
 import com.zajel.zajelandroid.BookList.AddToWishList.AddToWishlistRequestBody;
 import com.zajel.zajelandroid.BookList.Borrow.BorrowAndCancelBookResponseBody.BorrowBookResponseBody;
 import com.zajel.zajelandroid.BookList.Borrow.BorrowBookRequestBody.BorrowBookRequestBody;
+import com.zajel.zajelandroid.BookList.GenresModels.GenresList;
 import com.zajel.zajelandroid.BuildConfig;
 import com.zajel.zajelandroid.BookList.BooksModels.Books;
 import com.zajel.zajelandroid.Login.GoogleSignInModels.GoogleUser;
@@ -45,6 +46,8 @@ public class NetworkService {
     private final static String TABLE_BOOK_ACTIVITIES = "book_activities";
     private final static String TABLE_WISHLIST = "wishlists";
     private final static String TABLE_USERS = "users";
+    private final static String TABLE_GENRES = TABLE_BOOKS+"/genres";
+
 
     public  ZajelNetworkAPI getAPI() {
 
@@ -78,7 +81,7 @@ public class NetworkService {
 
         @GET(TABLE_BOOKS)
         Call<Books> getBooks(@Header("Access-Token") String accessToken, @Header("Client") String client ,@Header("Expiry")
-                String expiry ,@Header("Uid") String uid,@Header("Token-Type") String tokenType,@Header("Content-Type") String contentType,@Header("Accept") String accept, @Query("page") int page);
+                String expiry ,@Header("Uid") String uid,@Header("Token-Type") String tokenType,@Header("Content-Type") String contentType,@Header("Accept") String accept, @Query("page") int page,@Query("genre") String genre);
 
         @POST(TABLE_BOOKS)
         Call<AddBookResponseModel> addBook(@Header("Access-Token") String accessToken, @Header("Client") String client ,@Header("Expiry")
@@ -138,6 +141,13 @@ public class NetworkService {
         @PUT(TABLE_USERS+"/{user_id}")
         Call<JsonElement> updateFireBaseToken(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
                 String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Path("user_id") Integer Id, @Body UpdateFirebaseTokenRequestBody updateFirebaseTokenRequestBody);
+
+
+
+
+        @GET(TABLE_GENRES)
+        Call<GenresList> getGenreList(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
+                String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept);
 
 
     }
