@@ -56,7 +56,9 @@ public class SentRequestsFragment extends Fragment implements  APIManager.Reques
         sentRequestRecyclerView.setLayoutManager(mLayoutManager);
         swipeToRefresh.setRefreshing(true);
 
-        swipeToRefresh.setOnRefreshListener(() -> apiManager.getSendRequest());
+        swipeToRefresh.setOnRefreshListener(() -> {
+            requestsList= new ArrayList<>();
+            apiManager.getSendRequest();});
         return v;
     }
 

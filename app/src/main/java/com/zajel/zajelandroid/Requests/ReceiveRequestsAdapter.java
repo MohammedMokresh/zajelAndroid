@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -43,7 +44,15 @@ public class ReceiveRequestsAdapter extends RecyclerView.Adapter<ReceiveRequests
 
         holder.acceptButton.setOnClickListener(v -> {recieveRequestAdapterListener.acceptButtonOnClick(v,position); });
         holder.rejectButton.setOnClickListener(v -> {recieveRequestAdapterListener.rejectButtonOnClick(v,position); });
-//        holder..setOnClickListener(v -> {recieveRequestAdapterListener.acceptButtonOnClick(v,position); });
+
+        if (bookActivityList.get(position).getApproved().equals("accepted")){
+            holder.messageButton.setVisibility(View.VISIBLE);
+            holder.buttonsLinearLayout.setVisibility(View.GONE);
+        }else {
+            holder.messageButton.setVisibility(View.GONE);
+            holder.buttonsLinearLayout.setVisibility(View.VISIBLE);
+        }
+        holder.messageButton.setOnClickListener(v -> {recieveRequestAdapterListener.messageButtonOnClick(v,position); });
 
     }
 
@@ -65,8 +74,8 @@ public class ReceiveRequestsAdapter extends RecyclerView.Adapter<ReceiveRequests
     public static class ReceiveRequestAdapterHolder extends RecyclerView.ViewHolder {
         public TextView userNameTextView, bookNameTextView;
         public ImageView userImageView;
-        public Button acceptButton, rejectButton;
-
+        public Button acceptButton, rejectButton,messageButton;
+        LinearLayout buttonsLinearLayout;
 
         public ReceiveRequestAdapterHolder(View view) {
             super(view);
@@ -75,6 +84,8 @@ public class ReceiveRequestsAdapter extends RecyclerView.Adapter<ReceiveRequests
             bookNameTextView = view.findViewById(R.id.book_name_TextView);
             acceptButton = view.findViewById(R.id.accept_Button);
             rejectButton = view.findViewById(R.id.reject_Button);
+            messageButton=view.findViewById(R.id.message_Button);
+            buttonsLinearLayout=view.findViewById(R.id.buttons_LinearLayout);
 
         }
     }

@@ -17,6 +17,12 @@ public class DialogUtil {
         }
     }
 
+    public static void showRequestConfirmation(FragmentManager fragmentManager,Integer activityId, String status) {
+        if (fragmentManager == null) return;
+        if (DialogAcceptRequestConfirmationFragment.mDialogAcceptRequestConfirmationFragment == null) {
+            DialogAcceptRequestConfirmationFragment.newInstance(activityId,status).show(fragmentManager, "show_request_dialog");
+        }
+    }
 
     public static void removeProgressDialog() {
         try {
