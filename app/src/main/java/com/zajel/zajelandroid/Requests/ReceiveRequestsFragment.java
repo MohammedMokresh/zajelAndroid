@@ -25,7 +25,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ReceiveRequestsFragment extends Fragment implements  APIManager.RequestsResponse {
+public class ReceiveRequestsFragment extends Fragment implements  APIManager.RequestsResponse  , ReceiveRequestsAdapter.RecieveRequestAdapterListener {
     @BindView(R.id.receive_request_recyclerView)
     RecyclerView receiveRequestRecyclerView;
     @BindView(R.id.swipeRefreshLayout)
@@ -81,7 +81,7 @@ public class ReceiveRequestsFragment extends Fragment implements  APIManager.Req
             requestsList.addAll(requests.getBookActivities());
         }
 
-        receiveRequestsAdapter = new ReceiveRequestsAdapter(getContext(),requestsList);
+        receiveRequestsAdapter = new ReceiveRequestsAdapter(getContext(),requestsList,this);
         receiveRequestRecyclerView.setAdapter(receiveRequestsAdapter);
 
     }
@@ -89,5 +89,20 @@ public class ReceiveRequestsFragment extends Fragment implements  APIManager.Req
     @Override
     public void errorOccureRequest() {
         swipeToRefresh.setRefreshing(false);
+    }
+
+    @Override
+    public void acceptButtonOnClick(View v, int position) {
+
+    }
+
+    @Override
+    public void rejectButtonOnClick(View v, int position) {
+
+    }
+
+    @Override
+    public void messageButtonOnClick(View v, int position) {
+
     }
 }

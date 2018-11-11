@@ -12,6 +12,7 @@ import com.zajel.zajelandroid.BookList.BooksModels.Books;
 import com.zajel.zajelandroid.Login.GoogleSignInModels.GoogleUser;
 import com.zajel.zajelandroid.Login.LogInRequestBody;
 import com.zajel.zajelandroid.Profile.User.UpdateFirebaseTokenRequestBody;
+import com.zajel.zajelandroid.Requests.AcceptRejectRequestModel.AcceptRejectRequestRequestBody;
 import com.zajel.zajelandroid.Requests.RequestsModels.Requests;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRequestBody;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRespnseBody;
@@ -149,6 +150,11 @@ public class NetworkService {
         Call<GenresList> getGenreList(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
                 String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept);
 
+
+
+        @PUT(TABLE_BOOK_ACTIVITIES+"/{activity_id}")
+        Call<BorrowBookResponseBody> acceptRejectRequest(@Header("Access-Token") String accessToken, @Header("Client") String client , @Header("Expiry")
+                String expiry , @Header("Uid") String uid, @Header("Token-Type") String tokenType, @Header("Content-Type") String contentType, @Header("Accept") String accept, @Body AcceptRejectRequestRequestBody acceptRejectRequestRequestBody,@Path("activity_id") Integer activityId);
 
     }
 

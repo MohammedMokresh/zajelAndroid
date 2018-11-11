@@ -16,29 +16,34 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ReceiveRequestsAdapter extends RecyclerView.Adapter<ReceiveRequestsAdapter.SentRequestAdapterHolder> {
-    public MyAdapterListener onClickListener;
+public class ReceiveRequestsAdapter extends RecyclerView.Adapter<ReceiveRequestsAdapter.ReceiveRequestAdapterHolder> {
+    public RecieveRequestAdapterListener recieveRequestAdapterListener;
     private Context context;
     private List<BookActivity> bookActivityList;
 
-    public ReceiveRequestsAdapter(Context context, List<BookActivity> bookActivityList) {
+    public ReceiveRequestsAdapter(Context context, List<BookActivity> bookActivityList,RecieveRequestAdapterListener recieveRequestAdapterListener) {
         this.context = context;
         this.bookActivityList = bookActivityList;
+        this.recieveRequestAdapterListener=recieveRequestAdapterListener;
 
     }
 
-    public SentRequestAdapterHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ReceiveRequestAdapterHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflator = LayoutInflater.from(context);
         View view = inflator.inflate(R.layout.item_receive_request_list, null); //item_my_request_page
-        return new SentRequestAdapterHolder(view);
+        return new ReceiveRequestAdapterHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ReceiveRequestsAdapter.SentRequestAdapterHolder holder, final int position) {
+    public void onBindViewHolder(final ReceiveRequestsAdapter.ReceiveRequestAdapterHolder holder, final int position) {
         holder.bookNameTextView.setText(bookActivityList.get(position).getBook().getTitle());
+        bookActivityList.get(position).getId();
         holder.userNameTextView.setText(bookActivityList.get(position).getBorrower().getFirstName() + " " + bookActivityList.get(position).getBorrower().getLastName());
         Picasso.get().load(bookActivityList.get(position).getBorrower().getImage()).into(holder.userImageView);
 
+        holder.acceptButton.setOnClickListener(v -> {recieveRequestAdapterListener.acceptButtonOnClick(v,position); });
+        holder.rejectButton.setOnClickListener(v -> {recieveRequestAdapterListener.rejectButtonOnClick(v,position); });
+//        holder..setOnClickListener(v -> {recieveRequestAdapterListener.acceptButtonOnClick(v,position); });
 
     }
 
@@ -48,22 +53,22 @@ public class ReceiveRequestsAdapter extends RecyclerView.Adapter<ReceiveRequests
     }
 
 
-    public interface MyAdapterListener {
+    public interface RecieveRequestAdapterListener {
 
-        void mobileImageViewOnClick(View v, int position);
+        void acceptButtonOnClick(View v, int position);
 
-        void emailImageViewOnClick(View v, int position);
+        void rejectButtonOnClick(View v, int position);
 
-        void confirmButtonViewOnClick(View v, int position);
+        void messageButtonOnClick(View v, int position);
     }
 
-    public static class SentRequestAdapterHolder extends RecyclerView.ViewHolder {
+    public static class ReceiveRequestAdapterHolder extends RecyclerView.ViewHolder {
         public TextView userNameTextView, bookNameTextView;
         public ImageView userImageView;
         public Button acceptButton, rejectButton;
 
 
-        public SentRequestAdapterHolder(View view) {
+        public ReceiveRequestAdapterHolder(View view) {
             super(view);
             userImageView = view.findViewById(R.id.profile_ImageView);
             userNameTextView = view.findViewById(R.id.user_name_TextView);

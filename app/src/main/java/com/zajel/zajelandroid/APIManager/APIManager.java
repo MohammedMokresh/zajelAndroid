@@ -14,6 +14,7 @@ import com.zajel.zajelandroid.BookList.GenresModels.GenresList;
 import com.zajel.zajelandroid.Login.GoogleSignInModels.GoogleUser;
 import com.zajel.zajelandroid.Login.LogInRequestBody;
 import com.zajel.zajelandroid.PreferenceManager;
+import com.zajel.zajelandroid.Requests.AcceptRejectRequestModel.AcceptRejectRequestRequestBody;
 import com.zajel.zajelandroid.Requests.RequestsModels.Requests;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRequestBody;
 import com.zajel.zajelandroid.SignUp.Models.SignUpRespnseBody;
@@ -642,6 +643,54 @@ public class APIManager {
             public void onFailure(@NonNull Call<GenresList> call, @NonNull Throwable t) {
                 try {
                     genreListResponse.errorOccureGenre();
+                    throw new InterruptedException("Error occurred due to network problem");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+
+
+
+    /**
+     *
+     *
+     * Accept Reject Request
+     *
+     *
+     */
+    private AcceptRejectResponse acceptRejectResponse;
+
+    public void setAccepteRejectResponse(AcceptRejectResponse acceptRejectResponse) {
+        this.acceptRejectResponse = acceptRejectResponse;
+    }
+    public interface AcceptRejectResponse {
+        void requestStatusUpdate(BorrowBookResponseBody genresList);
+        void errorOccureRequestStatus();
+    }
+
+    public void acceptRejectRequest(AcceptRejectRequestRequestBody acceptRejectRequestRequestBody,Integer activityId) {
+        networkService.getAPI().acceptRejectRequest(preferenceManager.getAccessToken(),preferenceManager.getClient()
+                ,preferenceManager.getExpiry(),preferenceManager.getUid(),preferenceManager.getTokenType(),NetworkService.CONTENT_TYPE,NetworkService.ACCEPT,acceptRejectRequestRequestBody,activityId).enqueue(new Callback<BorrowBookResponseBody>() {
+            @Override
+            public void onResponse(@NonNull Call<BorrowBookResponseBody> call, @NonNull Response<BorrowBookResponseBody> response) {
+                if (response.body() != null && response.code() == HttpURLConnection.HTTP_OK) {
+
+                    BorrowBookResponseBody requests = response.body();
+
+                    acceptRejectResponse.requestStatusUpdate(requests);
+
+                } else {
+                    acceptRejectResponse.errorOccureRequestStatus();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<BorrowBookResponseBody> call, @NonNull Throwable t) {
+                try {
+                    acceptRejectResponse.errorOccureRequestStatus();
                     throw new InterruptedException("Error occurred due to network problem");
                 } catch (Exception e) {
                     e.printStackTrace();
